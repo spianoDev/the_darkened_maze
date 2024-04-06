@@ -1,10 +1,6 @@
-from players import Hero
+from players import *
 
-def add_leading_zero(answer):
-    if len(answer) == 1:
-        return '0' + answer
-    else:
-        return answer
+
 
 def move(self, direction):
     if direction == 'up' and int(self.position) < 10:

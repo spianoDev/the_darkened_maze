@@ -34,14 +34,16 @@ def do_turn(player, opponent):
     buy_health(player, player.health, player.money)
     print_status(player)
 
-my_name = input('Player 1 please enter your name: ')
+# my_name = input('Player 1 please enter your name: ')
 
 player2 = Hero('computer')
-player1 = Hero(my_name)
+player1 = Hero()
 
 player2.damage = 10
 
+
+
 Hero.move = move
 
-do_turn(player1, player2)
+do_turn(player1, level_aa_monster)
 do_turn(player2, player1)
