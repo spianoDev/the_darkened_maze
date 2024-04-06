@@ -4,8 +4,6 @@ from combat import * ## Pull in the combat function ##
 from move import * ## Pull in the move function ##
 from health import * ## Pull in buy health function ##
 
-## I will return to this idea when all the other grasshopper pieces are done to stitch them together with 'real'
-# functions ##
 dice_roll = randint(1, 6)
 move_options = ['blank', 'right', 'left', 'up', 'down', 'left', 'right']
 def typing(s):
