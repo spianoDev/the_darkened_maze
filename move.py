@@ -1,4 +1,4 @@
-from hero import Hero
+from players import Hero
 
 def add_leading_zero(answer):
     if len(answer) == 1:
