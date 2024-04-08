@@ -41,4 +41,4 @@ def monster_stats(monster):
       f' {monster.health} health')
 
 monster_stats(level_aa_monster)
-monster_stats(level_a_monster)
+# monster_stats(level_a_monster)

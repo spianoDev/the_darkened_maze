@@ -50,4 +50,4 @@ player2.damage = 10
 Hero.move = move
 
 do_turn(player1, level_aa_monster)
-do_turn(player2, player1)
+# do_turn(player2, player1)
