@@ -1,9 +1,11 @@
+## For a more rich terminal output: https://rich.readthedocs.io/en/stable/console.html#attributes ##
+
 from random import randint
 from time import sleep
 from combat import * ## Pull in the combat function ##
 from move import * ## Pull in the move function ##
 from health import * ## Pull in buy health function ##
-from players import *
+from players import * ## Pull in characters ##
 
 dice_roll = randint(1, 6)
 move_options = ['blank', 'right', 'left', 'up', 'down', 'left', 'right']
@@ -25,14 +27,16 @@ def do_turn(player, opponent):
                f'{person.money} coins...\n')
 
     '''Run turn sequence'''
-    typing(f'New turn: {player.name} rolls {dice_roll}\n')
+    typing(f'New turn: {player.name} what direction would you like to try next? [up, down, right, '
+                          f'left] ')
+    move_option = input('')
     typing(f'{player.name} moves to new position...\n')
     typing('. . . . . . . . \n')
-    player.move(move_options[dice_roll])
-    combat(player, opponent, player.health, opponent.damage)
-    get_coins()
-    buy_health(player, player.health, player.money)
-    print_status(player)
+    player.move(move_option)
+    # combat(player, opponent, player.health, opponent.damage)
+    # get_coins()
+    # buy_health(player, player.health, player.money)
+    # print_status(player)
 
 # my_name = input('Player 1 please enter your name: ')
 
