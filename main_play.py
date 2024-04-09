@@ -27,16 +27,17 @@ def do_turn(player, opponent):
                f'{person.money} coins...\n')
 
     '''Run turn sequence'''
+    print_status(player)
     typing(f'New turn: {player.name} what direction would you like to try next? [up, down, right, '
                           f'left] ')
     move_option = input('')
     typing(f'{player.name} moves to new position...\n')
     typing('. . . . . . . . \n')
-    player.move(move_option)
+    move(player, move_option)
     # combat(player, opponent, player.health, opponent.damage)
     # get_coins()
     # buy_health(player, player.health, player.money)
-    # print_status(player)
+    #
 
 # my_name = input('Player 1 please enter your name: ')
 
@@ -45,9 +46,7 @@ player1 = Hero()
 
 player2.damage = 10
 
-
-
-Hero.move = move
+# player1.move = move
 
 do_turn(player1, level_aa_monster)
 # do_turn(player2, player1)
