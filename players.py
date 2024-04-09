@@ -1,4 +1,8 @@
 from random import randint
+from boards import *
+
+
+random_start_number = randint(0,3)
 
 def add_leading_zero(answer):
     if len(answer) == 1:
@@ -9,7 +13,7 @@ def add_leading_zero(answer):
 class Hero(object):
     def __init__(self, name='Hero'):
         self.name = name
-        self.position = '00'
+        self.position = board[random_start_number][0]
         self.health = 100
         self.damage = 5
         self.experience = 0
@@ -18,7 +22,7 @@ class Hero(object):
 class Monster(object):
     def __init__(self, name='Teeters'):
         self.name = name
-        self.position = str(randint(0, 100))
+        self.position = board[1][1]
         self.health = 10
         self.damage = 2
 
@@ -41,4 +45,6 @@ def monster_stats(monster):
       f' {monster.health} health')
 
 monster_stats(level_aa_monster)
+level_aa_monster.position = board[1][1]
+level_a_monster.position = board[3][0]
 # monster_stats(level_a_monster)
