@@ -13,7 +13,7 @@ def add_leading_zero(answer):
 class Hero(object):
     def __init__(self, name='Hero'):
         self.name = name
-        self.position = board[random_start_number][0]
+        self.position = board[0][0]
         self.health = 100
         self.damage = 5
         self.experience = 0
@@ -46,5 +46,5 @@ def monster_stats(monster):
 
 monster_stats(level_aa_monster)
 level_aa_monster.position = board[1][1]
-level_a_monster.position = board[3][0]
+# level_a_monster.position = board[3][0]
 # monster_stats(level_a_monster)

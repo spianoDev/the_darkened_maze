@@ -7,24 +7,24 @@ pos_one = 0
 pos_two = 0
 
 def move(self, direction):
+    if direction == 'up' and random_start_number > 0:
+        self.position = board[random_start_number - 1][0]
+        print(self.position)
+    if direction == 'down' and random_start_number < 3:
+        self.position = board[random_start_number + 1][0]
+        print(self.position)
+    if direction == 'right':
+        self.position = board[random_start_number][pos_two + 1]
+        print(self.position)
+    if direction == 'left':
+        print(f'Direction {direction} is out of bounds. {self.name} remains on position {self.position}')
     if self.position == '||':
         print(f'You have encountered a wall.')
     elif self.position == '$$':
         find_chest(1, self)
     elif self.position == '^^':
         combat(self, level_aa_monster, self.health, level_aa_monster.damage)
-    else:
-        if direction == 'up' and random_start_number > 0:
-            self.position = board[random_start_number - 1][0]
-            print(self.position)
-        if direction == 'down' and random_start_number < 3:
-            self.position = board[random_start_number + 1][0]
-            print(self.position)
-        if direction == 'right':
-            self.position = board[random_start_number][pos_two + 1]
-            print(self.position)
-        if direction == 'left':
-            print(f'Direction {direction} is out of bounds. {self.name} remains on position {self.position}')
+    #
     #     return
     # elif direction == 'up' and int(self.position) >= 10:
     #     self.position = add_leading_zero(str(int(self.position) - 10))
