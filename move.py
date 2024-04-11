@@ -6,6 +6,20 @@ from combat import *
 pos_one = 0
 pos_two = 0
 
+def found_wall(self, place):
+    if self.position == '||':
+        print(f'You have encountered a wall.\n')
+        if place == 'up':
+            self.position = board[pos_one + 1][0]
+        if place == 'down':
+            self.position = board[pos_one - 1][0]
+        if place == 'right':
+            self.position = board[pos_one][pos_two + 1]
+        if place == 'left':
+            self.position = board[pos_one][pos_two - 1]
+        print(f'Go back to {self.position} and try again')
+        return
+
 def move(self, direction):
     if direction == 'up' and random_start_number > 0:
         self.position = board[random_start_number - 1][0]
@@ -19,7 +33,7 @@ def move(self, direction):
     if direction == 'left':
         print(f'Direction {direction} is out of bounds. {self.name} remains on position {self.position}')
     if self.position == '||':
-        print(f'You have encountered a wall.')
+        found_wall(self, direction)
     elif self.position == '$$':
         find_chest(1, self)
     elif self.position == '^^':
