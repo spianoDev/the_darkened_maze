@@ -6,7 +6,7 @@ from combat import *
 def move_up(self):
     if self.position_one > 0:
         self.position_one -= 1
-        print(self.position_one, board[self.position_one][self.position_two])
+        print('up', self.position_one, board[self.position_one][self.position_two])
         return
     else:
         print('out of bounds')
@@ -15,44 +15,44 @@ def move_up(self):
 def move_down(self):
     if self.position_one < 3:
         self.position_one += 1
-        print(self.position_one, board[self.position_one][self.position_two])
+        print('down', self.position_one, board[self.position_one][self.position_two])
         return
     else:
         print('out of bounds')
         return
 
-# def move_right(self):
-#     if pos_two < 3:
-#         self.position = board[pos_one][pos_two + 1]
-#         print('right', self.position, pos_one, pos_two + 1)
-#         return pos_two + 1, self.position
-#     else:
-#         print('out of bounds')
-#         return self.position
-#
-# def move_left(self):
-#     if pos_two > 0:
-#         self.position = board[pos_one][pos_two - 1]
-#         print(self.position, pos_one, pos_two - 1)
-#         return pos_two - 1, self.position
-#     else:
-#         print('out of bounds')
-#         return self.position
+def move_right(self):
+    if self.position_two < 3:
+        self.position_two += 1
+        print('right', self.position_two, board[self.position_one][self.position_two])
+        return
+    else:
+        print('out of bounds')
+        return
+
+def move_left(self):
+    if self.position_two > 0:
+        self.position_two -= 1
+        print('left', self.position_two, board[self.position_one][self.position_two])
+        return
+    else:
+        print('out of bounds')
+        return
 
 
-# def found_wall(self, place):
-#     if self.position == '||':
-#         print(f'You have encountered a wall.')
-#         if place == 'up':
-#             move_down(self)
-#         if place == 'down':
-#             move_up(self)
-#         if place == 'right':
-#             move_left(self)
-#         if place == 'left':
-#             move_right(self)
-#         print(f'Go back to {self.position} and try again')
-#         return
+def found_wall(self, direction):
+    if board[self.position_one][self.position_two] == '||':
+        print(f'You have encountered a wall.')
+        if direction == 'up':
+            move_down(self)
+        if direction == 'down':
+            move_up(self)
+        if direction == 'right':
+            move_left(self)
+        if direction == 'left':
+            move_right(self)
+        print(f'Go back to {self.position_one, self.position_two} and try again')
+        return
 
 def move(self, direction):
     if direction == 'up':
@@ -62,7 +62,6 @@ def move(self, direction):
     if direction == 'right':
         move_right(self)
     if direction == 'left':
-        print(f'Direction {direction} is out of bounds. {self.name} remains on position {self.position}')
         move_left(self)
     # if self.position == '||':
     #     found_wall(self, direction)
