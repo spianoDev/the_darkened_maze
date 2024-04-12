@@ -21,7 +21,7 @@ def do_turn(player, opponent):
 
     def print_status(person):
         # print(person.name, person.position, person.health, person.damage, person.experience, person.money)
-        typing(f'{person.name} is now in position {person.position} with {person.health} health and '
+        typing(f'{person.name} is now in position {person.position_one, person.position_two} with {person.health} health and '
                f'{person.money} coins...\n')
 
     '''Run turn sequence'''
