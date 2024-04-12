@@ -44,7 +44,7 @@ def monster_stats(monster):
     print(f'Monster Stats: {monster.name}, is in position {add_leading_zero(monster.position)} with'
       f' {monster.health} health')
 
-monster_stats(level_aa_monster)
+# monster_stats(level_aa_monster)
 level_aa_monster.position = board[1][1]
 # level_a_monster.position = board[3][0]
 # monster_stats(level_a_monster)

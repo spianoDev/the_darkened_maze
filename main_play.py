@@ -7,8 +7,6 @@ from move import * ## Pull in the move function ##
 from health import * ## Pull in buy health function ##
 from players import * ## Pull in characters ##
 
-dice_roll = randint(1, 6)
-move_options = ['blank', 'right', 'left', 'up', 'down', 'left', 'right']
 def typing(s):
     for letter in s:
         print(letter, end='', flush=True)

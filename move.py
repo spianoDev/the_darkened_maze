@@ -3,13 +3,14 @@ from boards import *
 from find_chest import *
 from combat import *
 
-pos_one = 0
-pos_two = 0
+pos_one = position
+pos_two = position
 
 def move_up(self):
     if pos_one > 0:
         self.position = board[pos_one - 1][pos_two]
         print(self.position, pos_one, pos_two)
+        return pos_one - 1, self.position
     else:
         print('out of bounds')
 
@@ -17,13 +18,15 @@ def move_down(self):
     if pos_one < 3:
         self.position = board[pos_one + 1][pos_two]
         print(self.position, pos_one, pos_two)
+        return pos_one + 1, self.position
     else:
         print('out of bounds')
 
 def move_right(self):
     if pos_two < 3:
         self.position = board[pos_one][pos_two + 1]
-        print(self.position, pos_one, pos_two)
+        print('right', self.position, pos_one, pos_two)
+        return pos_two + 1, self.position
     else:
         print('out of bounds')
 
@@ -31,13 +34,14 @@ def move_left(self):
     if pos_two > 0:
         self.position = board[pos_one][pos_two - 1]
         print(self.position, pos_one, pos_two)
+        return pos_two - 1, self.position
     else:
         print('out of bounds')
 
 
 def found_wall(self, place):
     if self.position == '||':
-        print(f'You have encountered a wall.\n')
+        print(f'You have encountered a wall.')
         if place == 'up':
             move_down(self)
         if place == 'down':
