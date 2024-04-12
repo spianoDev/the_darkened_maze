@@ -7,7 +7,7 @@ def level(size):
     chest = '$$'
 
     for num in range(size):
-        row1 = [wall, wall, wall, wall, '\n']
+        row1 = [path, path, wall, wall, '\n']
         row2 = [wall, monster, wall, wall, '\n']
         row3 = [path, path, wall, chest, '\n']
         row4 = [wall, path, path, path, '\n']
