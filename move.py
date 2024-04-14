@@ -41,18 +41,17 @@ def move_left(self):
 
 
 def found_wall(self, direction):
-    if board[self.position_one][self.position_two] == '||':
-        print(f'You have encountered a wall.')
-        if direction == 'up':
-            move_down(self)
-        if direction == 'down':
-            move_up(self)
-        if direction == 'right':
-            move_left(self)
-        if direction == 'left':
-            move_right(self)
-        print(f'Go back to {self.position_one, self.position_two} and try again')
-        return
+    print(f'You have encountered a wall.')
+    if direction == 'up':
+        move_down(self)
+    if direction == 'down':
+        move_up(self)
+    if direction == 'right':
+        move_left(self)
+    if direction == 'left':
+        move_right(self)
+    print(f'Go back to {self.position_one, self.position_two} and try again')
+    return
 
 def move(self, direction):
     if direction == 'up':
@@ -63,11 +62,11 @@ def move(self, direction):
         move_right(self)
     if direction == 'left':
         move_left(self)
-    # if self.position == '||':
-    #     found_wall(self, direction)
-    # elif self.position == '$$':
-    #     find_chest(1, self)
-    # elif self.position == '^^':
-    #     combat(self, level_aa_monster, self.health, level_aa_monster.damage)
+    if board[self.position_one][self.position_two] == '||':
+        found_wall(self, direction)
+    elif board[self.position_one][self.position_two] == '$$':
+        find_chest(1, self)
+    elif board[self.position_one][self.position_two] == '^^':
+        combat(self, level_aa_monster, self.health, level_aa_monster.damage)
 
 Hero.move = move

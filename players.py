@@ -23,7 +23,8 @@ class Hero(object):
 class Monster(object):
     def __init__(self, name='Teeters'):
         self.name = name
-        self.position = board[1][1]
+        self.position_one = 1
+        self.position_two = 1
         self.health = 10
         self.damage = 2
 
@@ -46,6 +47,6 @@ def monster_stats(monster):
       f' {monster.health} health')
 
 # monster_stats(level_aa_monster)
-level_aa_monster.position = board[1][1]
+level_aa_monster.position_one = 0
 # level_a_monster.position = board[3][0]
 # monster_stats(level_a_monster)

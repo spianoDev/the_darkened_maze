@@ -1,5 +1,5 @@
 def combat(self, enemy, health, damage):
-    if self.position == enemy.position:
+    if self.position_one == enemy.position_one and self.position_two == enemy.position_two:
         print(f'{self.name}, you see an enemy ahead! Prepare for COMBAT with {enemy.name}!!')
         if (health - damage) <= 0:
             self.health = health - damage
