@@ -46,7 +46,24 @@ def monster_stats(monster):
     print(f'Monster Stats: {monster.name}, is in position {add_leading_zero(monster.position)} with'
       f' {monster.health} health')
 
-# monster_stats(level_aa_monster)
-level_aa_monster.position_one = 0
-# level_a_monster.position = board[3][0]
-# monster_stats(level_a_monster)
+# print(board)
+monster_locations = [(pos1,pos2) for pos1,i in enumerate(board)
+       for pos2,y in enumerate(i) if y == '^^']
+
+# print(monster_locations)
+
+def create_monsters(monster_level):
+    # for num_monster in range(len(monster_locations)):
+
+
+    for location in monster_locations:
+        iterator = 1
+        monster = Monster()
+        monster.name = 'Teeters'
+        monster.position_one = location[0]
+        monster.position_two = location[1]
+        iterator += 1
+        print(monster.name, monster.position_one, monster.position_two)
+
+create_monsters(level_aa_monster)
+

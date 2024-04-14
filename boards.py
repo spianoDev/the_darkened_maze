@@ -8,9 +8,9 @@ def level(size):
 
     for num in range(size):
         row1 = [path, wall, chest, wall, '\n']
-        row2 = [monster, monster, path, wall, '\n']
-        row3 = [path, path, monster, chest, '\n']
-        row4 = [wall, path, path, path, '\n']
+        row2 = [path, monster, path, wall, '\n']
+        row3 = [wall, path, path, chest, '\n']
+        row4 = [wall, path, monster, path, '\n']
         board.append(row1)
         board.append(row2)
         board.append(row3)
