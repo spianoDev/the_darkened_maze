@@ -31,7 +31,7 @@ def do_turn(player, opponent):
     move_option = input('')
     typing(f'{player.name} moves to new position...\n')
     typing('. . . . . . . . \n')
-    move(player, move_option)
+    move(player, opponent, move_option)
 
     # buy_health(player, player.health, player.money)
     #
@@ -43,6 +43,7 @@ player1 = Hero()
 
 player2.damage = 10
 
+create_monsters()
 do_turn(player1, level_aa_monster)
 do_turn(player1, level_aa_monster)
 do_turn(player1, level_aa_monster)

@@ -23,28 +23,14 @@ class Hero(object):
 class Monster(object):
     def __init__(self, name='Teeters'):
         self.name = name
-        self.position_one = 1
-        self.position_two = 1
-        self.health = 10
-        self.damage = 2
+        self.position_one = 10
+        self.position_two = 10
+        self.health = 5
+        self.damage = 10
 
 
-my_name = 'spiano'
+# my_name = 'spiano'
 myHero = Hero()
-
-another_hero = Hero(my_name)
-level_aa_monster = Monster()
-level_a_monster = Monster('Skeeter Bite')
-level_a_monster.health = 20
-level_a_monster.damage = 5
-level_b_monster = Monster('Milky Mounds')
-level_c_monster = Monster('Jugs Er Knot')
-level_d_monster = Monster('Death Hooters')
-level_dd_monster = Monster('Slimy Boobies')
-level_ddd_monster = Monster('Hell\'s Gate Knockers')
-def monster_stats(monster):
-    print(f'Monster Stats: {monster.name}, is in position {add_leading_zero(monster.position)} with'
-      f' {monster.health} health')
 
 # print(board)
 monster_locations = [(pos1,pos2) for pos1,i in enumerate(board)
@@ -52,18 +38,30 @@ monster_locations = [(pos1,pos2) for pos1,i in enumerate(board)
 
 # print(monster_locations)
 
-def create_monsters(monster_level):
-    # for num_monster in range(len(monster_locations)):
-
-
+def create_monsters():
     for location in monster_locations:
         iterator = 1
         monster = Monster()
         monster.name = 'Teeters'
         monster.position_one = location[0]
         monster.position_two = location[1]
+        monster.health = 5
+        monster.damage = 10
         iterator += 1
         print(monster.name, monster.position_one, monster.position_two)
+    return
 
-create_monsters(level_aa_monster)
 
+# another_hero = Hero(my_name)
+level_aa_monster = Monster()
+# level_a_monster = Monster('Skeeter Bite')
+# level_a_monster.health = 20
+# level_a_monster.damage = 5
+# level_b_monster = Monster('Milky Mounds')
+# level_c_monster = Monster('Jugs Er Knot')
+# level_d_monster = Monster('Death Hooters')
+# level_dd_monster = Monster('Slimy Boobies')
+# level_ddd_monster = Monster('Hell\'s Gate Knockers')
+# def monster_stats(monster):
+#     print(f'Monster Stats: {monster.name}, is in position {add_leading_zero(monster.position)} with'
+#           f' {monster.health} health')
