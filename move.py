@@ -1,4 +1,3 @@
-from players import *
 from boards import *
 from find_chest import *
 from combat import *
@@ -13,7 +12,7 @@ def move_up(self):
         return
 
 def move_down(self):
-    if self.position_one < 3:
+    if self.position_one <= len(board):
         self.position_one += 1
         print('down', self.position_one, board[self.position_one][self.position_two])
         return
@@ -22,7 +21,7 @@ def move_down(self):
         return
 
 def move_right(self):
-    if self.position_two < 3:
+    if self.position_two <= len(board):
         self.position_two += 1
         print('right', self.position_two, board[self.position_one][self.position_two])
         return
@@ -76,7 +75,7 @@ def action(self, opponent, direction):
         found_wall(self, direction)
         action(self, opponent, direction)
     elif board[self.position_one][self.position_two] == '$$':
-        find_chest(1, self)
+        find_chest(len(board), self)
     elif board[self.position_one][self.position_two] == '^^':
         print(f'{self.name}, you see an enemy ahead! Prepare for COMBAT with {opponent.name}!!')
         combat(self, opponent, self.health, opponent.damage)

@@ -18,13 +18,13 @@ class Hero(object):
         self.health = 100
         self.damage = 5
         self.experience = 0
-        self.money = 30
+        self.money = 5
 
 class Monster(object):
     def __init__(self, name='Teeters'):
         self.name = name
-        self.position_one = 10
-        self.position_two = 10
+        self.position_one = -1
+        self.position_two = -1
         self.health = 5
         self.damage = 10
 
