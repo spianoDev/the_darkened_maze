@@ -58,23 +58,28 @@ def move(self, opponent, direction):
     #     print(f'{self.name}, you see an enemy ahead! ')
     #     combat(self, opponent, self.health, opponent.damage)
     # else:
-        if direction == 'up':
-            move_up(self)
-        if direction == 'down':
-            move_down(self)
-        if direction == 'right':
-            move_right(self)
-        if direction == 'left':
-            move_left(self)
-        if board[self.position_one][self.position_two] == '||':
-            found_wall(self, direction)
-        elif board[self.position_one][self.position_two] == '$$':
-            find_chest(1, self)
-        elif board[self.position_one][self.position_two] == '^^':
-            print(f'{self.name}, you see an enemy ahead! Prepare for COMBAT with {opponent.name}!!')
-            combat(self, opponent, self.health, opponent.damage)
-        else:
-            print(f'This location seems safe for now...')
-        # self.position_one == opponent.position_one and self.position_two == opponent.position_two and
+    if direction == 'up':
+        move_up(self)
+        action(self, opponent, direction)
+    if direction == 'down':
+        move_down(self)
+        action(self, opponent, direction)
+    if direction == 'right':
+        move_right(self)
+        action(self, opponent, direction)
+    if direction == 'left':
+        move_left(self)
+        action(self, opponent, direction)
 
-Hero.move = move
+def action(self, opponent, direction):
+    if board[self.position_one][self.position_two] == '||':
+        found_wall(self, direction)
+        action(self, opponent, direction)
+    elif board[self.position_one][self.position_two] == '$$':
+        find_chest(1, self)
+    elif board[self.position_one][self.position_two] == '^^':
+        print(f'{self.name}, you see an enemy ahead! Prepare for COMBAT with {opponent.name}!!')
+        combat(self, opponent, self.health, opponent.damage)
+    else:
+        print(f'This location seems safe for now...')
+    # self.position_one == opponent.position_one and self.po
