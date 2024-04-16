@@ -54,11 +54,10 @@ def found_wall(self, direction):
     return
 
 def move(self, opponent, direction):
-    if self.position_one == opponent.position_one and self.position_two == opponent.position_two:
-        print(f'{self.name}, you see an enemy ahead! Prepare for COMBAT with {opponent.name}!!')
-        combat(self, opponent, self.health, opponent.damage)
-    else:
-        print(f'This location seems safe for now...')
+    # if board[self.position_one][self.position_two] == '^^':
+    #     print(f'{self.name}, you see an enemy ahead! ')
+    #     combat(self, opponent, self.health, opponent.damage)
+    # else:
         if direction == 'up':
             move_up(self)
         if direction == 'down':
@@ -71,7 +70,11 @@ def move(self, opponent, direction):
             found_wall(self, direction)
         elif board[self.position_one][self.position_two] == '$$':
             find_chest(1, self)
-    # elif board[self.position_one][self.position_two] == '^^':
-    #     combat(self, level_aa_monster, self.health, level_aa_monster.damage)
+        elif board[self.position_one][self.position_two] == '^^':
+            print(f'{self.name}, you see an enemy ahead! Prepare for COMBAT with {opponent.name}!!')
+            combat(self, opponent, self.health, opponent.damage)
+        else:
+            print(f'This location seems safe for now...')
+        # self.position_one == opponent.position_one and self.position_two == opponent.position_two and
 
 Hero.move = move
