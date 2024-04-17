@@ -19,6 +19,7 @@ class Hero(object):
         self.damage = 5
         self.experience = 0
         self.money = 5
+        self.potion = 0
 
 class Monster(object):
     def __init__(self, name='Teeters'):

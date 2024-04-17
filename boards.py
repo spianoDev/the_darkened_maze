@@ -5,9 +5,10 @@ def level(size):
     path = ' - '
     monster = '^^'
     chest = '$$'
+    potion = '@>'
 
     for num in range(size):
-        row1 = [path, wall, chest, wall, '\n']
+        row1 = [path, potion, chest, wall, '\n']
         row2 = [chest, monster, path, wall, '\n']
         row3 = [wall, path, path, chest, '\n']
         row4 = [wall, path, monster, path, '\n']
@@ -17,4 +18,4 @@ def level(size):
         board.append(row4)
 
 level(1)
-print(board, len(board))
+# print(board, len(board))
