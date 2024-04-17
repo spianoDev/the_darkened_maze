@@ -8,43 +8,43 @@ from style import typing
 def move_up(self):
     if self.position_one > 0:
         self.position_one -= 1
-        print('up', self.position_one, board[self.position_one][self.position_two])
+        # print('up', self.position_one, board[self.position_one][self.position_two])
         return
     else:
-        print('out of bounds')
+        typing('out of bounds\n')
         return
 
 def move_down(self):
     if self.position_one <= len(board):
         self.position_one += 1
-        print('down', self.position_one, board[self.position_one][self.position_two])
+        # print('down', self.position_one, board[self.position_one][self.position_two])
         return
     else:
-        print('out of bounds')
+        typing('out of bounds\n')
         return
 
 def move_right(self):
     if self.position_two <= len(board):
         self.position_two += 1
-        print('right', self.position_two, board[self.position_one][self.position_two])
+        # print('right', self.position_two, board[self.position_one][self.position_two])
         return
     else:
-        print('out of bounds')
+        typing('out of bounds\n')
         return
 
 def move_left(self):
     if self.position_two > 0:
         self.position_two -= 1
-        print('left', self.position_two, board[self.position_one][self.position_two])
+        # print('left', self.position_two, board[self.position_one][self.position_two])
         return
     else:
-        print('out of bounds')
+        typing('out of bounds\n')
         return
 
 
 ## actions when encountering a wall in the board ##
 def found_wall(self, direction):
-    print(f'You have encountered a wall.')
+    typing(f'You have encountered a wall.')
     if direction == 'up':
         move_down(self)
     if direction == 'down':
@@ -53,7 +53,7 @@ def found_wall(self, direction):
         move_left(self)
     if direction == 'left':
         move_right(self)
-    print(f'Go back to {self.position_one, self.position_two} and try again')
+    typing(f'Go back to {self.position_one, self.position_two} and try again')
     return
 
 ## actions according to what the move encounters ##
@@ -69,7 +69,7 @@ def action(self, opponent, direction):
     elif board[self.position_one][self.position_two] == '@>':
         find_potion(self)
     else:
-        print(f'This location seems safe for now...')
+        typing(f'This location seems safe for now...')
 
 ## Using the move and actions together to get different results ##
 def move(self, opponent, direction):
