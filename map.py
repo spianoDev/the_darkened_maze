@@ -13,7 +13,7 @@ for row in board:
             map_row.append('\n')
     map_of_board.append(map_row)
 
-map_of_board[0][0] = ' - '
+map_of_board[0][0] = '- '
 # print(*map_of_board)
 
 def print_map():

@@ -51,7 +51,7 @@ def found_wall(self, direction):
         move_left(self)
     if direction == 'left':
         move_right(self)
-    typing(f'Go back to {self.position_one, self.position_two} and try again')
+    typing(f'Go back to {self.position_one, self.position_two} and try again.\n')
     return
 
 ## actions according to what the move encounters ##
@@ -63,14 +63,15 @@ def action(self, opponent, direction):
         found_wall(self, direction)
         action(self, opponent, direction)
     elif board[self.position_one][self.position_two] == '$$':
-        map_of_board[self.position_one][self.position_two] = ' - '
+        map_of_board[self.position_one][self.position_two] = '- '
         find_chest(len(board), self)
     elif board[self.position_one][self.position_two] == '^^':
         map_of_board[self.position_one][self.position_two] = '^^'
-        typing(f'{self.name}, you see an enemy ahead! Prepare for COMBAT with {opponent.name}!!')
+        typing(f'{self.name}, you see an enemy ahead! Prepare for COMBAT with {opponent.name}!!\n')
+        typing(' .  / \  . \n')
         combat(self, opponent, self.health, opponent.damage)
     elif board[self.position_one][self.position_two] == '@>':
-        map_of_board[self.position_one][self.position_two] = ' - '
+        map_of_board[self.position_one][self.position_two] = '- '
         find_potion(self)
     else:
         typing(f'This location seems safe for now...\n')
