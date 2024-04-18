@@ -16,7 +16,7 @@ def do_turn(player, opponent):
     typing(f'{player.name} moves to new position...\n')
     # typing('. . . . . . . . \n')
     move(player, opponent, move_option)
-    print(*map_of_board)
+    print_map()
 
 # my_name = input('Player 1 please enter your name: ')
 
