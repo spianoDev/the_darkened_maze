@@ -1,4 +1,5 @@
 from boards import *
+from map import *
 from find_treasure import *
 from combat import *
 from players import *
