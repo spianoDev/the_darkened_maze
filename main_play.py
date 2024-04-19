@@ -18,18 +18,17 @@ def do_turn(player, opponent):
     move(player, opponent, move_option)
     print_map()
 
-# my_name = input('Player 1 please enter your name: ')
-
 player2 = Hero('computer')
-player1 = Hero()
+
 
 player2.damage = 10
 
 create_monsters()
-do_turn(player1, level_aa_monster)
-do_turn(player1, level_aa_monster)
-do_turn(player1, level_aa_monster)
-do_turn(player1, level_aa_monster)
-do_turn(player1, level_aa_monster)
-do_turn(player1, level_aa_monster)
-# do_turn(player2, player1)
+my_name = input('Player 1 please enter your name: ')
+player1 = Hero(my_name)
+
+def play_level(level):
+    while player1.position_one < len(board) and player1.position_one < len(board):
+        do_turn(player1, level_aa_monster)
+
+play_level(1)
