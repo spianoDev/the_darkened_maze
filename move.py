@@ -56,6 +56,9 @@ def found_wall(self, direction):
 
 ## actions according to what the move encounters ##
 def action(self, opponent, direction):
+    if board[self.position_one] == -1 or board[self.position_two] == -1:
+        print('boundary')
+        pass
     if board[self.position_one][self.position_two] == ' - ':
         map_of_board[self.position_one][self.position_two] = '- '
     if board[self.position_one][self.position_two] == '||':
