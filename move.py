@@ -9,26 +9,25 @@ from style import typing
 def move_up(self):
     if self.position_one > 0:
         self.position_one -= 1
-        # print('up', self.position_one, board[self.position_one][self.position_two])
         return
     else:
-        typing(f'Up is out of bounds. Returning to {self.position_one, self.position_two}.\n')
+        found_wall(self, 'up', 'the boundary')
         return
 
 def move_down(self):
-    if self.position_one <= len(board):
+    if self.position_one < len(board):
         self.position_one += 1
         return
     else:
-        typing(f'Down is out of bounds. Returning to {self.position_one, self.position_two}.\n')
+        found_wall(self, 'down', 'the boundary')
         return
 
 def move_right(self):
-    if self.position_two <= len(board):
+    if self.position_two < len(board):
         self.position_two += 1
         return
     else:
-        typing(f'Right is out of bounds. Returning to {self.position_one, self.position_two}.\n')
+        found_wall(self, 'right', 'the boundary')
         return
 
 def move_left(self):
@@ -36,13 +35,13 @@ def move_left(self):
         self.position_two -= 1
         return
     else:
-        typing(f'Left is out of bounds. Returning to {self.position_one, self.position_two}.\n')
+        found_wall(self, 'left', 'the boundary')
         return
 
 
 ## actions when encountering a wall in the board ##
-def found_wall(self, direction):
-    typing(f'You have encountered a wall. ')
+def found_wall(self, direction, barrier):
+    typing(f'You have encountered {barrier}. ')
     if direction == 'up':
         move_down(self)
     if direction == 'down':
@@ -56,14 +55,20 @@ def found_wall(self, direction):
 
 ## actions according to what the move encounters ##
 def action(self, opponent, direction):
-    if self.position_one > len(board) or self.position_two > len(board):
+    if self.position_one < len(board) and self.position_two == len(board):
+        print(f'{self.name} is now out of the maze')
+        return
+    if self.position_one == len(board) and self.position_two < len(board):
+        print(f'{self.name} is now out of the maze')
+        return
+    if self.position_one == len(board) or self.position_two == len(board):
         print('boundary')
-        found_wall(self, direction)
+        found_wall(self, direction, 'the boundary')
     if board[self.position_one][self.position_two] == ' - ':
         map_of_board[self.position_one][self.position_two] = '- '
     if board[self.position_one][self.position_two] == '||':
         map_of_board[self.position_one][self.position_two] = '||'
-        found_wall(self, direction)
+        found_wall(self, direction, 'a wall')
         action(self, opponent, direction)
     elif board[self.position_one][self.position_two] == '$$':
         map_of_board[self.position_one][self.position_two] = '- '

@@ -1,6 +1,7 @@
 from style import * ## Pull in styling ##
 from move import * ## Pull in the move function ##
 from players import * ## Pull in characters ##
+from boards import *
 
 def do_turn(player, opponent):
     def print_status(person):
@@ -29,8 +30,8 @@ player1 = Hero(my_name)
 
 def play_level(player):
     while player.position_one < len(board) and player.position_one < len(board):
-        if player.position_one == len(board) and player.position_two == len(board):
-            print(f'Congratulations {player}, you have solved the board!')
+        # if player.position_one == len(board) and player.position_two == len(board):
         do_turn(player1, level_aa_monster)
+    print(f'Congratulations {player.name}, you have solved the maze!')
 
 play_level(player1)

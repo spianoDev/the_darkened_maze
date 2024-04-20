@@ -19,4 +19,4 @@ def level(size):
 
 level(1)
 
-
+print(len(board))

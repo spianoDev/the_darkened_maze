@@ -6,13 +6,13 @@ from style import typing
 def find_chest(game_level, player):
     chest = randint((game_level * 1), (game_level * 4))
     player.money += chest
-    typing(f'Congratulations warrior, you have found a chest containing {chest} coins and now carry'
+    typing(f'Congratulations {player.name}, you have found a chest containing {chest} coins and now carry'
           f' {player.money} coins!!\n')
     board[player.position_one][player.position_two] = ' - '
 
 ## initial find potion function ##
 def find_potion(player):
-    typing('Incredible! You have found a health potion!!')
+    typing(f'Incredible {player}! You have found a health potion!!')
     if player.health < 95:
         answer = input(f'Your current health is {player.health}%, would you like to restore 5 '
                        'health points? [yes or no] \n')

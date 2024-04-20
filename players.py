@@ -29,11 +29,8 @@ class Monster(object):
         self.health = 5
         self.damage = 10
 
-
-# my_name = 'spiano'
 myHero = Hero()
 
-# print(board)
 monster_locations = [(pos1,pos2) for pos1,i in enumerate(board)
        for pos2,y in enumerate(i) if y == '^^']
 
@@ -49,7 +46,7 @@ def create_monsters():
         monster.health = 5
         monster.damage = 10
         iterator += 1
-        print(monster.name, monster.position_one, monster.position_two)
+        # print(monster.name, monster.position_one, monster.position_two)
     return
 
 
