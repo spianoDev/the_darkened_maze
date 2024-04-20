@@ -12,7 +12,7 @@ def find_chest(game_level, player):
 
 ## initial find potion function ##
 def find_potion(player):
-    typing(f'Incredible {player}! You have found a health potion!!')
+    typing(f'Incredible {player.name}! You have found a health potion!!')
     if player.health < 95:
         answer = input(f'Your current health is {player.health}%, would you like to restore 5 '
                        'health points? [yes or no] \n')

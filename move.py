@@ -43,9 +43,15 @@ def move_left(self):
 def found_wall(self, direction, barrier):
     typing(f'You have encountered {barrier}. ')
     if direction == 'up':
-        move_down(self)
+        if barrier == 'the boundary':
+            self.position_one = 0
+        else:
+            move_down(self)
     if direction == 'down':
-        move_up(self)
+        if barrier == 'the boundary':
+            self.position_one = len(board) - 1
+        else:
+            move_up(self)
     if direction == 'right':
         move_left(self)
     if direction == 'left':
@@ -76,7 +82,6 @@ def action(self, opponent, direction):
     elif board[self.position_one][self.position_two] == '^^':
         map_of_board[self.position_one][self.position_two] = '^^'
         typing(f'{self.name}, you see an enemy ahead! Prepare for COMBAT with {opponent.name}!!\n')
-        typing(' .  / \  . \n')
         combat(self, opponent, self.health, opponent.damage)
     elif board[self.position_one][self.position_two] == '@>':
         map_of_board[self.position_one][self.position_two] = '- '

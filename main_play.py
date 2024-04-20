@@ -29,8 +29,7 @@ my_name = input('Player 1 please enter your name: ')
 player1 = Hero(my_name)
 
 def play_level(player):
-    while player.position_one < len(board) and player.position_one < len(board):
-        # if player.position_one == len(board) and player.position_two == len(board):
+    while player.position_one < len(board) and player.position_two < len(board):
         do_turn(player1, level_aa_monster)
     print(f'Congratulations {player.name}, you have solved the maze!')
 
