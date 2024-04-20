@@ -18,4 +18,5 @@ def level(size):
         board.append(row4)
 
 level(1)
-# print(board, len(board))
+
+

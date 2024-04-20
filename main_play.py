@@ -27,8 +27,10 @@ create_monsters()
 my_name = input('Player 1 please enter your name: ')
 player1 = Hero(my_name)
 
-def play_level(level):
-    while player1.position_one < len(board) and player1.position_one < len(board):
+def play_level(player):
+    while player.position_one < len(board) and player.position_one < len(board):
+        if player.position_one == len(board) and player.position_two == len(board):
+            print(f'Congratulations {player}, you have solved the board!')
         do_turn(player1, level_aa_monster)
 
-play_level(1)
+play_level(player1)
