@@ -61,15 +61,15 @@ def found_wall(self, direction, barrier):
 
 ## actions according to what the move encounters ##
 def action(self, opponent, direction):
-    if self.position_one < len(board) and self.position_two == len(board):
-        print(f'{self.name} is now out of the maze')
-        return
-    if self.position_one == len(board) and self.position_two < len(board):
-        print(f'{self.name} is now out of the maze')
+    if self.position_one == len(board) and self.position_two == len(board) - 1:
         return
     if self.position_one == len(board) or self.position_two == len(board):
-        print('boundary')
-        found_wall(self, direction, 'the boundary')
+        if self.position_one < len(board) or self.position_two < len(board):
+            print('boundary')
+            found_wall(self, direction, 'the boundary')
+        else:
+            print(f'{self.name} is now out of the maze')
+        return
     if board[self.position_one][self.position_two] == ' - ':
         map_of_board[self.position_one][self.position_two] = '- '
     if board[self.position_one][self.position_two] == '||':
