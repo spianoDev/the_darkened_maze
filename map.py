@@ -1,5 +1,4 @@
 from boards import *
-from style import typing
 
 map_of_board = []
 

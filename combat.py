@@ -1,6 +1,7 @@
 from style import typing
 from random import randint
 import move as run_away
+from map import *
 
 
 def combat(self, enemy):
@@ -22,7 +23,7 @@ def combat(self, enemy):
                 health_points(enemy, self, self.heath, enemy.damage)
         else:
             health_points(enemy, self, self.health, enemy.damage)
-
+    map_of_board[self.position_one][self.position_two] = '- '
 
 def health_points(attacker, defender, health, damage):
     if (health - damage) <= 0:

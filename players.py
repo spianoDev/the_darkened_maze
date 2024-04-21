@@ -22,8 +22,8 @@ class Hero(object):
         self.potion = 0
 
 class Monster(object):
-    def __init__(self, name='Teeters'):
-        self.name = name
+    def __init__(self):
+        self.name = 'placeholder'
         self.position_one = -1
         self.position_two = -1
         self.health = 10
@@ -35,23 +35,25 @@ monster_locations = [(pos1,pos2) for pos1,i in enumerate(board)
        for pos2,y in enumerate(i) if y == '^^']
 
 # print(monster_locations)
-
+monsters = []
 def create_monsters():
+    iterator = 1
     for location in monster_locations:
-        iterator = 1
-        monster = Monster()
-        monster.name = 'Teeters'
-        monster.position_one = location[0]
-        monster.position_two = location[1]
-        monster.health = 5
-        monster.damage = 10
+        m = Monster()
+        m.name = 'Teeters ' + str(iterator)
+        m.position_one = location[0]
+        m.position_two = location[1]
+        m.health = 10
+        m.damage = 10
         iterator += 1
-        # print(monster.name, monster.position_one, monster.position_two)
-    return
+        # print(m.name, m.position_one, m.position_two)
+        monsters.append(m)
+    # return m
 
+create_monsters()
 
 # another_hero = Hero(my_name)
-level_aa_monster = Monster()
+# level_aa_monster = create_monsters()
 # level_a_monster = Monster('Skeeter Bite')
 # level_a_monster.health = 20
 # level_a_monster.damage = 5

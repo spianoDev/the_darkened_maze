@@ -28,9 +28,14 @@ create_monsters()
 my_name = input('Player 1 please enter your name: ')
 player1 = Hero(my_name)
 
-def play_level(player):
+def play_level(player, enemy):
     while player.position_one < len(board) and player.position_two < len(board):
-        do_turn(player1, level_aa_monster)
+        if enemy[0].health > 0:
+            do_turn(player1, enemy[0])
+        elif enemy[1].health > 0:
+            do_turn(player1, enemy[1])
+        else:
+            do_turn(player, enemy)
     print(f'Congratulations {player.name}, you have solved the maze!')
 
-play_level(player1)
+play_level(player1, monsters)
