@@ -3,7 +3,7 @@ def buy_health(self, health, coins):
         buy_more = input(f'{self.name}, you have been wounded in battle. Would you like to purchase a healing potion? [Enter yes or no] ')
         if buy_more == 'no':
             print(f'You have decided to continue with {self.health} and carry {self.money} coins. Good luck '
-                  f'{player.name}.')
+                  f'{self.name}.')
         elif buy_more == 'yes':
             how_many = input(f'Enter the number of potions? ')
             if int(how_many) * 5 > self.money:

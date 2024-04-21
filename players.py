@@ -26,7 +26,7 @@ class Monster(object):
         self.name = name
         self.position_one = -1
         self.position_two = -1
-        self.health = 5
+        self.health = 10
         self.damage = 10
 
 myHero = Hero()

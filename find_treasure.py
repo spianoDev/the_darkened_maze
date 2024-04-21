@@ -1,6 +1,7 @@
 from random import randint
 from boards import *
 from style import typing
+from health import *
 
 ## initial find chest function ##
 def find_chest(game_level, player):

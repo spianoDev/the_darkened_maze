@@ -82,7 +82,7 @@ def action(self, opponent, direction):
     elif board[self.position_one][self.position_two] == '^^':
         map_of_board[self.position_one][self.position_two] = '^^'
         typing(f'{self.name}, you see an enemy ahead! Prepare for COMBAT with {opponent.name}!!\n')
-        combat(self, opponent, self.health, opponent.damage)
+        combat(self, opponent)
     elif board[self.position_one][self.position_two] == '@>':
         map_of_board[self.position_one][self.position_two] = '- '
         find_potion(self)

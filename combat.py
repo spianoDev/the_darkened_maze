@@ -1,12 +1,38 @@
 from style import typing
+from random import randint
+import move as run_away
 
-def combat(self, enemy, health, damage):
+
+def combat(self, enemy):
+    while enemy.health > 0:
+        self_luck = randint(1, 6)
+        monster_luck = randint(2, 6)
+        print(f'self = {self_luck} and monster = {monster_luck}')
+        if self_luck == monster_luck or self_luck > monster_luck:
+            typing(f'{self.name} and {enemy.name} eye each other suspiciously...\n')
+            reply = input(f'{self.name}, you can try to strike the first blow or run away [fight, run] ')
+            if reply == 'fight':
+                health_points(self, enemy, enemy.health, self.damage)
+            elif reply == 'run':
+                if self_luck >= 3:
+                    run_away.move(self, enemy, 'left')
+                    break
+            else:
+                typing(f'{self.name} loses balance and falls...\n')
+                health_points(enemy, self, self.heath, enemy.damage)
+        else:
+            health_points(enemy, self, self.health, enemy.damage)
+
+
+def health_points(attacker, defender, health, damage):
     if (health - damage) <= 0:
-        self.health = health - damage
-        typing(f'{enemy.name} has struck a fatal blow! Your health is now {self.health} and you died...\n')
+        defender.health = health - damage
+        typing(f'{attacker.name} has struck a fatal blow! {defender.name}\'s health is now {defender.health} and '
+               f'{defender.name} died...\n')
         return health
     else:
-        self.health = health - damage
-        typing(f'Your remaining health is {self.health}\n')
+        typing(f'{attacker.name} strikes!\n')
+        defender.health = health - damage
+        typing(f'{defender.name} remaining health is {defender.health}\n')
         return health
 
