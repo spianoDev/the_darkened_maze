@@ -18,7 +18,10 @@ def do_turn(player, opponent):
     map_of_board[player.position_one][player.position_two] = '- '
     # typing('. . . . . . . . \n')
     move(player, opponent, move_option)
-    map_of_board[player.position_one][player.position_two] = 'P1'
+    if player.position_one == len(board) and player.position_two == len(board) - 1:
+        return
+    else:
+        map_of_board[player.position_one][player.position_two] = 'P1'
     print_map()
 
 player2 = Hero('computer')
