@@ -15,8 +15,10 @@ def do_turn(player, opponent):
                           f'left] ')
     move_option = input('')
     typing(f'{player.name} moves to new position...\n')
+    map_of_board[player.position_one][player.position_two] = '- '
     # typing('. . . . . . . . \n')
     move(player, opponent, move_option)
+    map_of_board[player.position_one][player.position_two] = 'P1'
     print_map()
 
 player2 = Hero('computer')

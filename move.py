@@ -103,8 +103,8 @@ def move(self, opponent, direction):
     if direction == 'left':
         move_left(self)
         action(self, opponent, direction)
-    else:
-        typing(f'{self.name} spins around, remaining on the same space.\n')
+    # else:
+    #     typing(f'{self.name} spins around, remaining on the same space.\n')
 
 
 
