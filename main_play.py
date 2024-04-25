@@ -42,7 +42,7 @@ def play_level(player, enemy):
             do_turn(player1, enemy[1])
         else:
             do_turn(player, enemy)
+    typing(f'Congratulations {player.name}, you have solved the maze!\n')
+    typing(f'Before continuing to the next level, you have the option to restore your health.\n')
     buy_health(player, player.health, player.money, player.potion)
-    print(f'Congratulations {player.name}, you have solved the maze!')
-
 play_level(player1, monsters)

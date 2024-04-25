@@ -20,10 +20,11 @@ def combat(self, enemy):
                     break
             else:
                 typing(f'{self.name} loses balance and falls...\n')
-                health_points(enemy, self, self.heath, enemy.damage)
+                health_points(enemy, self, self.health, enemy.damage)
         else:
             health_points(enemy, self, self.health, enemy.damage)
     map_of_board[self.position_one][self.position_two] = '- '
+    board[self.position_one][self.position_two] = '- '
 
 def health_points(attacker, defender, health, damage):
     if (health - damage) <= 0:
