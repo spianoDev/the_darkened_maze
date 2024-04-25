@@ -2,6 +2,7 @@ from style import * ## Pull in styling ##
 from move import * ## Pull in the move function ##
 from players import * ## Pull in characters ##
 from boards import *
+from health import *
 
 def do_turn(player, opponent):
     def print_status(person):
@@ -16,7 +17,7 @@ def do_turn(player, opponent):
     move_option = input('')
     typing(f'{player.name} moves to new position...\n')
     map_of_board[player.position_one][player.position_two] = '- '
-    # typing('. . . . . . . . \n')
+
     move(player, opponent, move_option)
     if player.position_one == len(board) and player.position_two == len(board) - 1:
         return
@@ -41,6 +42,7 @@ def play_level(player, enemy):
             do_turn(player1, enemy[1])
         else:
             do_turn(player, enemy)
+    buy_health(player, player.health, player.money, player.potion)
     print(f'Congratulations {player.name}, you have solved the maze!')
 
 play_level(player1, monsters)

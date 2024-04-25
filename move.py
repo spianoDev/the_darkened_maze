@@ -56,7 +56,8 @@ def found_wall(self, direction, barrier):
         move_left(self)
     if direction == 'left':
         move_right(self)
-    typing(f'Go back to {self.position_one, self.position_two} and try again.\n')
+    typing(f'{self.name} spins around, remaining on the same space.\n')
+    # typing(f'Go back to {self.position_one, self.position_two} and try again.\n')
     return
 
 ## actions according to what the move encounters ##
@@ -103,8 +104,7 @@ def move(self, opponent, direction):
     if direction == 'left':
         move_left(self)
         action(self, opponent, direction)
-    # else:
-    #     typing(f'{self.name} spins around, remaining on the same space.\n')
+
 
 
 
