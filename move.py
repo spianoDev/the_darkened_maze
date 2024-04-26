@@ -1,5 +1,6 @@
 from boards import *
 from map import *
+from random import randint
 from find_treasure import *
 from combat import *
 from players import *
@@ -39,9 +40,8 @@ def move_left(self):
         return
 
 
-## actions when encountering a wall in the board ##
+## actions when encountering a wall or the boundary of the board ##
 def found_wall(self, direction, barrier):
-    typing(f'You have encountered {barrier}. ')
     if direction == 'up':
         if barrier == 'the boundary':
             self.position_one = 0
@@ -56,6 +56,11 @@ def found_wall(self, direction, barrier):
         move_left(self)
     if direction == 'left':
         move_right(self)
+    if barrier == 'the boundary':
+        off_board_types = ['a thicket of thorny brambles', 'a 2000 foot drop', 'the side of a mountain',
+                           'swirling water rapids', 'a black abyss', 'molten lava']
+        off_board = off_board_types[randint(0, 5)]
+        typing(f'You have encountered {off_board}. \n')
     typing(f'{self.name} spins around, remaining on the same space.\n')
     # typing(f'Go back to {self.position_one, self.position_two} and try again.\n')
     return
@@ -66,7 +71,6 @@ def action(self, opponent, direction):
         return
     if self.position_one == len(board) or self.position_two == len(board):
         if self.position_one < len(board) or self.position_two < len(board):
-            print('boundary')
             found_wall(self, direction, 'the boundary')
         else:
             print(f'{self.name} is now out of the maze')
