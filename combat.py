@@ -26,6 +26,7 @@ def combat(self, enemy):
     map_of_board[self.position_one][self.position_two] = '- '
     board[self.position_one][self.position_two] = '- '
 
+
 def health_points(attacker, defender, health, damage):
     if (health - damage) <= 0:
         defender.health = health - damage
@@ -37,4 +38,5 @@ def health_points(attacker, defender, health, damage):
         defender.health = health - damage
         typing(f'{defender.name} remaining health is {defender.health}\n')
         return health
+
 

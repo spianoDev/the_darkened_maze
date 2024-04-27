@@ -45,25 +45,35 @@ def found_wall(self, direction, barrier):
     if direction == 'up':
         if barrier == 'the boundary':
             self.position_one = 0
+            boundary()
         else:
             move_down(self)
     if direction == 'down':
         if barrier == 'the boundary':
             self.position_one = len(board) - 1
+            boundary()
         else:
             move_up(self)
     if direction == 'right':
-        move_left(self)
+        if barrier == 'the boundary':
+            self.position_two = len(board) - 1
+            boundary()
+        else:
+            move_left(self)
     if direction == 'left':
-        move_right(self)
-    if barrier == 'the boundary':
-        off_board_types = ['a thicket of thorny brambles', 'a 2000 foot drop', 'the side of a mountain',
-                           'swirling water rapids', 'a black abyss', 'molten lava']
-        off_board = off_board_types[randint(0, 5)]
-        typing(f'You have encountered {off_board}. \n')
+        if barrier == 'the boundary':
+            self.position_two = 0
+            boundary()
+        else:
+            move_right(self)
     typing(f'{self.name} spins around, remaining on the same space.\n')
-    # typing(f'Go back to {self.position_one, self.position_two} and try again.\n')
     return
+
+def boundary():
+    off_board_types = ['a thicket of thorny brambles', 'a 2000 foot drop', 'the side of a mountain',
+                       'swirling water rapids', 'a black abyss', 'molten lava']
+    off_board = off_board_types[randint(0, 5)]
+    typing(f'You have encountered {off_board}. \n')
 
 ## actions according to what the move encounters ##
 def action(self, opponent, direction):
@@ -78,6 +88,7 @@ def action(self, opponent, direction):
     if board[self.position_one][self.position_two] == ' - ':
         map_of_board[self.position_one][self.position_two] = '- '
     if board[self.position_one][self.position_two] == '||':
+        typing(f'{self.name} has run into a wall.\n')
         map_of_board[self.position_one][self.position_two] = '||'
         found_wall(self, direction, 'a wall')
         action(self, opponent, direction)
@@ -109,8 +120,11 @@ def move(self, opponent, direction):
         move_left(self)
         action(self, opponent, direction)
 
+## Player dies ##
 
-
+def player_died(self):
+    if self.health < 0:
+        exit()
 
 
 
