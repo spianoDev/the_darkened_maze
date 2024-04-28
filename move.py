@@ -120,11 +120,7 @@ def move(self, opponent, direction):
         move_left(self)
         action(self, opponent, direction)
 
-## Player dies ##
 
-def player_died(self):
-    if self.health < 0:
-        exit()
 
 
 

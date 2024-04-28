@@ -34,6 +34,8 @@ create_monsters()
 my_name = input('Player 1 please enter your name: ')
 player1 = Hero(my_name)
 
+
+
 def play_level(player, enemy):
     while player.position_one < len(board) and player.position_two < len(board):
         if enemy[0].health > 0:

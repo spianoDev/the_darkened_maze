@@ -3,6 +3,13 @@ from random import randint
 import move as run_away
 from map import *
 
+## Player dies ##
+
+def player_died(self):
+    if self.health <= 0:
+        exit()
+    else:
+        pass
 
 def combat(self, enemy):
     while enemy.health > 0:
@@ -23,6 +30,7 @@ def combat(self, enemy):
                 health_points(enemy, self, self.health, enemy.damage)
         else:
             health_points(enemy, self, self.health, enemy.damage)
+            player_died(self)
     map_of_board[self.position_one][self.position_two] = '- '
     board[self.position_one][self.position_two] = '- '
 
@@ -38,5 +46,4 @@ def health_points(attacker, defender, health, damage):
         defender.health = health - damage
         typing(f'{defender.name} remaining health is {defender.health}\n')
         return health
-
 
