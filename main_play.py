@@ -33,8 +33,7 @@ player2.damage = 10
 create_monsters()
 my_name = input('Player 1 please enter your name: ')
 player1 = Hero(my_name)
-
-
+console.rule('[bold green] The Darkened Maze: Level 1')
 
 def play_level(player, enemy):
     while player.position_one < len(board) and player.position_two < len(board):
@@ -47,4 +46,5 @@ def play_level(player, enemy):
     typing(f'Congratulations {player.name}, you have solved the maze!\n')
     typing(f'Before continuing to the next level, you have the option to restore your health.\n')
     buy_health(player, player.health, player.money, player.potion)
+
 play_level(player1, monsters)

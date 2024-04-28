@@ -1,4 +1,5 @@
 from boards import *
+from style import *
 
 map_of_board = []
 
@@ -16,7 +17,9 @@ map_of_board[0][0] = 'P1'
 # print(*map_of_board)
 
 def print_map():
-    print('Below is a map of the maze. \n" - " is a path, "||" is a wall, and "^^" is a monster.')
+    console.print('Below is a map of the maze.', style='Bold Green')
+    console.print('" - " is a path, "||" is a wall, and "^^" is a monster\n')
     for r in map_of_board:
-        print(*r[:-1])
+        console.print(*r[:-1], style='black on yellow')
+        print('\n')
 
