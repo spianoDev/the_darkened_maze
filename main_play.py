@@ -33,7 +33,7 @@ player2.damage = 10
 create_monsters()
 my_name = input('Player 1 please enter your name: ')
 player1 = Hero(my_name)
-console.rule('[bold green] The Darkened Maze: Level 1')
+console.rule('[bold red] The Darkened Maze: Level 1')
 
 def play_level(player, enemy):
     while player.position_one < len(board) and player.position_two < len(board):

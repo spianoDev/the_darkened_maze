@@ -1,4 +1,3 @@
-from style import typing
 from random import randint
 import move as run_away
 from map import *
@@ -36,6 +35,12 @@ def combat(self, enemy):
 
 
 def health_points(attacker, defender, health, damage):
+    if defender.health <= 50 and defender.potion > 0:
+        use_potion = input(f'{defender}, your health is dropping quickly. Would you like to use a health potion? [yes '
+                          f'or no] ')
+        if use_potion == 'yes':
+            defender.health += 10
+            defender.potion -= 1
     if (health - damage) <= 0:
         defender.health = health - damage
         typing(f'{attacker.name} has struck a fatal blow! {defender.name}\'s health is now {defender.health} and '

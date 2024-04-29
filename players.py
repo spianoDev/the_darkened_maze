@@ -31,8 +31,8 @@ class Monster(object):
 
 myHero = Hero()
 
-monster_locations = [(pos1,pos2) for pos1,i in enumerate(board)
-       for pos2,y in enumerate(i) if y == '^^']
+monster_locations = [(pos1, pos2) for pos1, i in enumerate(board)
+       for pos2, y in enumerate(i) if y == '^^']
 
 # print(monster_locations)
 monsters = []
@@ -45,6 +45,7 @@ def create_monsters():
         m.position_two = location[1]
         m.health = 10
         m.damage = 10
+        m.potion = 0
         iterator += 1
         # print(m.name, m.position_one, m.position_two)
         monsters.append(m)

@@ -17,15 +17,16 @@ map_of_board[0][0] = 'P1'
 # print(*map_of_board)
 
 def print_map(self):
-    console.print('Map Legend', style='Bold Green')
+    console.print('Map Legend', style='Bold red')
     console.print('" - " is a path, "||" is a wall')
-    console.print(f'"^^" is a monster, "P1" is Player {self}')
+    console.print(f'"^^" is a monster, "P1" is Player [green]{self.name}')
     maze_map = []
     printable_maze_map = ''
     for r in map_of_board:
         maze_map.append(r)
         printable_maze_map += ''.join(r)
-    console.print(Panel(printable_maze_map, title='Maze Level 1', style='bold black on light_yellow3', expand=False))
+    console.print(Panel(printable_maze_map, title='[bold dark_red]Maze Level 1',
+                        style='bold black on light_yellow3', expand=False))
     # print('\n')
     # print(maze_map)
     # print(printable_maze_map)
