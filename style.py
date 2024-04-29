@@ -1,5 +1,6 @@
 ## For a more rich terminal output: https://rich.readthedocs.io/en/stable/console.html#attributes ##
 from rich.console import Console
+from rich.panel import Panel
 console = Console()
 
 from time import sleep

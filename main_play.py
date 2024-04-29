@@ -23,7 +23,7 @@ def do_turn(player, opponent):
         return
     else:
         map_of_board[player.position_one][player.position_two] = 'P1'
-    print_map()
+    print_map(player)
 
 player2 = Hero('computer')
 
