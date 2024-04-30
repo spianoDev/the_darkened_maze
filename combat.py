@@ -36,13 +36,16 @@ def combat(self, enemy):
 
 def health_points(attacker, defender, health, damage):
     if defender.health <= 50 and defender.potion > 0:
-        use_potion = input(f'{defender}, your health is dropping quickly. Would you like to use a health potion? [yes '
-                          f'or no] ')
+        use_potion = input(f'{defender.name}, your health is dropping quickly. Would you like to use a health potion? '
+                           f'[yes or no] ')
         if use_potion == 'yes':
             defender.health += 10
             defender.potion -= 1
+            typing(f'{defender.name} quickly guzzles the potion and feels health restoring to {defender.health} '
+                   f'points!\n')
+            return defender.health
     if (health - damage) <= 0:
-        defender.health = health - damage
+        defender.health = 0
         typing(f'{attacker.name} has struck a fatal blow! {defender.name}\'s health is now {defender.health} and '
                f'{defender.name} died...\n')
         return health

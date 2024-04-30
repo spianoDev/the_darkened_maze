@@ -25,7 +25,7 @@ def print_map(self):
     for r in map_of_board:
         maze_map.append(r)
         printable_maze_map += ''.join(r)
-    console.print(Panel(printable_maze_map, title='[bold dark_red]Maze Level 1',
+    console.print(Panel(printable_maze_map[:-1], title='[bold dark_red]Maze Level 1',
                         style='bold black on light_yellow3', expand=False))
     # print('\n')
     # print(maze_map)

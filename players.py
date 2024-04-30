@@ -36,6 +36,7 @@ monster_locations = [(pos1, pos2) for pos1, i in enumerate(board)
 
 # print(monster_locations)
 monsters = []
+
 def create_monsters():
     iterator = 1
     for location in monster_locations:
@@ -44,7 +45,7 @@ def create_monsters():
         m.position_one = location[0]
         m.position_two = location[1]
         m.health = 10
-        m.damage = 10
+        m.damage = 20
         m.potion = 0
         iterator += 1
         # print(m.name, m.position_one, m.position_two)
