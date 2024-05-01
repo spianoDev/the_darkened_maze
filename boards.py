@@ -1,5 +1,6 @@
 board = []
 
+
 def level(size):
     wall = '||'
     path = ' - '
@@ -17,5 +18,5 @@ def level(size):
         board.append(row3)
         board.append(row4)
 
-level(1)
 
+level(1)

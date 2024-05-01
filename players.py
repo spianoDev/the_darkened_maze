@@ -1,14 +1,16 @@
 from random import randint
 from boards import *
+from style import typing
 
+random_start_number = randint(0, 3)
 
-random_start_number = randint(0,3)
 
 def add_leading_zero(answer):
     if len(answer) == 1:
         return '0' + answer
     else:
         return answer
+
 
 class Hero(object):
     def __init__(self, name='Hero'):
@@ -21,6 +23,7 @@ class Hero(object):
         self.money = 5
         self.potion = 0
 
+
 class Monster(object):
     def __init__(self):
         self.name = 'placeholder'
@@ -29,13 +32,15 @@ class Monster(object):
         self.health = 10
         self.damage = 10
 
+
 myHero = Hero()
 
 monster_locations = [(pos1, pos2) for pos1, i in enumerate(board)
-       for pos2, y in enumerate(i) if y == '^^']
+                     for pos2, y in enumerate(i) if y == '^^']
 
 # print(monster_locations)
 monsters = []
+
 
 def create_monsters():
     iterator = 1
@@ -52,7 +57,15 @@ def create_monsters():
         monsters.append(m)
     # return m
 
+
 create_monsters()
+
+
+def print_status(person):
+    # print(person.name, person.position, person.health, person.damage, person.experience, person.money)
+    typing(
+        f'{person.name} is now in position {person.position_one, person.position_two} with {person.health} health and '
+        f'{person.money} coins...\n')
 
 # another_hero = Hero(my_name)
 # level_aa_monster = create_monsters()

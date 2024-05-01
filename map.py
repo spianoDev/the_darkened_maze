@@ -14,6 +14,8 @@ for row in board:
     map_of_board.append(map_row)
 
 map_of_board[0][0] = 'P1'
+
+
 # print(*map_of_board)
 
 def print_map(self):
