@@ -5,9 +5,20 @@ from boards import *
 from health import *
 
 
+def print_options(self, user_input):
+    if user_input == 'get status':
+        print_status(self)
+    if user_input == 'print map':
+        print_map(self)
+    if user_input == 'both':
+        print_status(self)
+        print_map(self)
+    else:
+        pass
+
+
 def do_turn(player, opponent):
     """Run turn sequence"""
-    # print_status(player)
     typing(f'{player.name} what direction would you like to go? [up, down, right, '
            f'left] ')
     move_option = input('')
@@ -19,15 +30,9 @@ def do_turn(player, opponent):
         return
     else:
         map_of_board[player.position_one][player.position_two] = 'P1'
-    typing(f'{player.name}, what would you like to do next? [get status, print map, move] ')
+    typing(f'{player.name}, what would you like to do next? [get status, print map, both, move] ')
     next_step = input('')
-    if next_step == 'get status':
-        print_status(player)
-    if next_step == 'print map':
-        print_map(player)
-    else:
-        pass
-    # print_map(player)
+    print_options(player, next_step)
 
 
 player2 = Hero('computer')
