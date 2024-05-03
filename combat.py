@@ -1,6 +1,6 @@
-from random import randint
 import move as run_away
 from map import *
+from find_treasure import *
 
 
 ## Player dies ##

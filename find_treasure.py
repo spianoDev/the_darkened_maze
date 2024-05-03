@@ -1,33 +1,33 @@
 from random import randint
 from boards import *
-from style import typing
+from style import *
 from health import *
 
-potion_image = '  |~|  \n.\'   `.\n`.___.\'\n'
-chest_image = (' ._____._____.  \n/_____/|\\____/ \\\n\\             \\ )\n/____ $$$ ____/ |\n|             | '
-               '|\n|_____/|\\_____| /\n')
-print(chest_image)
+
+chest_image = '[gold3] ._____._____.  \n/_____/|\\____/ \\\n\\             \\ )\n/____[yellow1] $$$ '
+                            '[/yellow1]____/ |\n|             | |\n|_____/|\\_____| /\n'
+potion_image = '  |~|  \n.\'[green]o0o[/green]`.\n`.___.\'\n'
 
 
 ## print image of item ##
 def print_image(item):
-    typing(item)
+    console.print(item)
 
 
 ## initial find chest function ##
 def find_chest(game_level, player):
     chest = randint((game_level * 1), (game_level * 4))
     player.money += chest
+    print_image(chest_image)
     typing(f'Congratulations {player.name}, you have found a chest containing {chest} coins and now carry'
            f' {player.money} coins!!\n')
-    print_image(chest_image)
     board[player.position_one][player.position_two] = ' - '
 
 
 ## initial find potion function ##
 def find_potion(player):
-    typing(f'Incredible {player.name}! You have found a health potion!!\n')
     print_image(potion_image)
+    typing(f'Incredible {player.name}! You have found a health potion!!\n')
     if player.health < 95:
         answer = input(f'Your current health is {player.health}%, would you like to restore 5 '
                        'health points? [yes or no] \n')
