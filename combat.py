@@ -2,9 +2,11 @@ import move as run_away
 from map import *
 from find_treasure import *
 
+dead_monster = '    ([bold red]X X[/bold red])    \n,,,--( )--,,,\n'
+# print_image(dead_monster)
+
 
 ## Player dies ##
-
 def player_died(self):
     if self.health <= 0:
         exit()
@@ -50,6 +52,7 @@ def health_points(attacker, defender, health, damage):
         defender.health = 0
         typing(f'{attacker.name} has struck a fatal blow! {defender.name}\'s health is now {defender.health} and '
                f'{defender.name} died...\n')
+        print_image(dead_monster)
         return health
     else:
         typing(f'{attacker.name} strikes!\n')

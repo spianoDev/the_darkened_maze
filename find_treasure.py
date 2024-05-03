@@ -4,8 +4,7 @@ from style import *
 from health import *
 
 
-chest_image = '[gold3] ._____._____.  \n/_____/|\\____/ \\\n\\             \\ )\n/____[yellow1] $$$ '
-                            '[/yellow1]____/ |\n|             | |\n|_____/|\\_____| /\n'
+chest_image = '[gold3] ._____._____.  \n/_____/|\\____/ \\\n\\             \\ )\n/____[yellow1] $$$ [/yellow1]____/ |\n|             | |\n|_____/|\\_____| /\n'
 potion_image = '  |~|  \n.\'[green]o0o[/green]`.\n`.___.\'\n'
 
 
