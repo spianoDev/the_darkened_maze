@@ -31,7 +31,7 @@ def do_turn(player, opponent):
     else:
         map_of_board[player.position_one][player.position_two] = 'P1'
     typing(f'{player.name}, what would you like to do next? \n'
-           f'[s = get status, m = print map, b = both or enter to continue] ')
+           f'[s = get status, m = print map, b = both, or press enter to continue] ')
     next_step = input('')
     print_options(player, next_step)
 
@@ -41,9 +41,6 @@ player2 = Hero('computer')
 player2.damage = 10
 
 create_monsters()
-my_name = input('Player 1 please enter your name: ')
-player1 = Hero(my_name)
-console.rule('[bold red] The Darkened Maze: Level 1')
 
 
 def play_level(player, enemy):
@@ -59,4 +56,22 @@ def play_level(player, enemy):
     buy_health(player, player.health, player.money, player.potion)
 
 
-play_level(player1, monsters)
+print('\n')
+console.rule('[bold red] The Darkened Maze: Level 1')
+print('\n')
+my_name = input('Player 1 please enter your name: ')
+player1 = Hero(my_name)
+
+typing(f'{player1.name}, you have discovered a maze! Do you have the courage to enter? [e = enter, a = avoid] \n')
+play_game = input('')
+if play_game.lower() == 'enter' or play_game.lower() == 'e':
+    play_level(player1, monsters)
+else:
+    typing(f'{player1.name}, fair thee well... \n')
+    sleep(2)
+    typing('A creaking sound behind you forces you to turn around just in time to see the maze entrance obscure '
+           'itself with vines and brambles.\n')
+
+
+
+

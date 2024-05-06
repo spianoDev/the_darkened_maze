@@ -21,10 +21,10 @@ def combat(self, enemy):
         print(f'self = {self_luck} and monster = {monster_luck}')
         if self_luck == monster_luck or self_luck > monster_luck:
             typing(f'{self.name} and {enemy.name} eye each other suspiciously...\n')
-            reply = input(f'{self.name}, you can try to strike the first blow or run away [fight, run] ')
-            if reply == 'fight':
+            reply = input(f'{self.name}, you can try to strike the first blow or run away [f = fight, r = run] ')
+            if reply.lower() == 'fight' or reply.lower() == 'f':
                 health_points(self, enemy, enemy.health, self.damage)
-            elif reply == 'run':
+            elif reply.lower == 'run' or reply.lower() == 'r':
                 if self_luck >= 3:
                     run_away.move(self, enemy, 'left')
                     break
@@ -40,14 +40,16 @@ def combat(self, enemy):
 
 def health_points(attacker, defender, health, damage):
     if defender.health <= 50 and defender.potion > 0:
-        use_potion = input(f'{defender.name}, your health is dropping quickly. Would you like to use a health potion? '
-                           f'[yes or no] ')
-        if use_potion == 'yes':
+        increase_health = input(f'{defender.name}, your health is dropping quickly. Would you like to use a health potion? '
+                           f'[y = yes or n = no] ')
+        if increase_health.lower() == 'yes' or increase_health.lower() == 'y':
             defender.health += 10
             defender.potion -= 1
-            typing(f'{defender.name} quickly guzzles the potion and feels health restoring to {defender.health} '
-                   f'points!\n')
+            typing(f'{defender.name} quickly guzzles the potion and feels health restoring to {defender.health}'
+                   f' points!\n')
             return defender.health
+        if increase_health.lower() == 'no' or increase_health.lower() == 'n':
+            typing(f'{defender.name} decides to continue the battle without any health restoration.\n')
     if (health - damage) <= 0:
         defender.health = 0
         typing(f'{attacker.name} has struck a fatal blow! {defender.name}\'s health is now {defender.health} and '
