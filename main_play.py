@@ -6,11 +6,11 @@ from health import *
 
 
 def print_options(self, user_input):
-    if user_input == 'get status':
+    if user_input.lower() == 'get status' or user_input.lower() == 's':
         print_status(self)
-    if user_input == 'print map':
+    if user_input.lower() == 'print map' or user_input.lower() == 'm':
         print_map(self)
-    if user_input == 'both':
+    if user_input.lower() == 'both' or user_input.lower() == 'b':
         print_status(self)
         print_map(self)
     else:
@@ -30,7 +30,8 @@ def do_turn(player, opponent):
         return
     else:
         map_of_board[player.position_one][player.position_two] = 'P1'
-    typing(f'{player.name}, what would you like to do next? [get status, print map, both, move] ')
+    typing(f'{player.name}, what would you like to do next? \n'
+           f'[s = get status, m = print map, b = both] ')
     next_step = input('')
     print_options(player, next_step)
 
