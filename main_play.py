@@ -19,8 +19,8 @@ def print_options(self, user_input):
 
 def do_turn(player, opponent):
     """Run turn sequence"""
-    typing(f'{player.name} what direction would you like to go? [up, down, right, '
-           f'left] ')
+    typing(f'{player.name} what direction would you like to go? \n'
+           f'[u = up, d = down, r = right, l = left] ')
     move_option = input('')
     typing(f'{player.name} moves to new position...\n')
     map_of_board[player.position_one][player.position_two] = '- '
@@ -31,7 +31,7 @@ def do_turn(player, opponent):
     else:
         map_of_board[player.position_one][player.position_two] = 'P1'
     typing(f'{player.name}, what would you like to do next? \n'
-           f'[s = get status, m = print map, b = both] ')
+           f'[s = get status, m = print map, b = both or enter to continue] ')
     next_step = input('')
     print_options(player, next_step)
 

@@ -6,6 +6,7 @@ from combat import *
 from players import *
 from style import typing
 
+
 ## Basic move functions without hard coded values ##
 def move_up(self):
     if self.position_one > 0:
@@ -15,6 +16,7 @@ def move_up(self):
         found_wall(self, 'up', 'the boundary')
         return
 
+
 def move_down(self):
     if self.position_one < len(board):
         self.position_one += 1
@@ -23,6 +25,7 @@ def move_down(self):
         found_wall(self, 'down', 'the boundary')
         return
 
+
 def move_right(self):
     if self.position_two < len(board):
         self.position_two += 1
@@ -30,6 +33,7 @@ def move_right(self):
     else:
         found_wall(self, 'right', 'the boundary')
         return
+
 
 def move_left(self):
     if self.position_two > 0:
@@ -69,11 +73,13 @@ def found_wall(self, direction, barrier):
     typing(f'{self.name} spins around, remaining on the same space.\n')
     return
 
+
 def boundary():
     off_board_types = ['a thicket of thorny brambles', 'a 2000 foot drop', 'the side of a mountain',
                        'swirling water rapids', 'a black abyss', 'molten lava']
     off_board = off_board_types[randint(0, 5)]
     typing(f'You have encountered {off_board}. \n')
+
 
 ## actions according to what the move encounters ##
 def action(self, opponent, direction):
@@ -105,23 +111,18 @@ def action(self, opponent, direction):
     else:
         typing(f'This location seems safe for now...\n')
 
+
 ## Using the move and actions together to get different results ##
 def move(self, opponent, direction):
-    if direction == 'up':
+    if direction.lower() == 'up' or direction.lower() == 'u':
         move_up(self)
         action(self, opponent, direction)
-    if direction == 'down':
+    if direction.lower() == 'down' or direction.lower() == 'd':
         move_down(self)
         action(self, opponent, direction)
-    if direction == 'right':
+    if direction.lower() == 'right' or direction.lower() == 'r':
         move_right(self)
         action(self, opponent, direction)
-    if direction == 'left':
+    if direction.lower() == 'left' or direction.lower() == 'l':
         move_left(self)
         action(self, opponent, direction)
-
-
-
-
-
-
