@@ -35,6 +35,8 @@ class Monster(object):
 
 myHero = Hero()
 
+monster_names = ['Teeters ', 'Skeeter Bite ', 'Milky Mounds ', 'Jugs Er Knot ', 'Death Hooters ', 'Slimy Boobies ',
+                 'Hell\'s Gate Knockers ']
 monster_locations = [(pos1, pos2) for pos1, i in enumerate(board)
                      for pos2, y in enumerate(i) if y == '^^']
 
@@ -42,15 +44,15 @@ monster_locations = [(pos1, pos2) for pos1, i in enumerate(board)
 monsters = []
 
 
-def create_monsters():
+def create_monsters(maze_level):
     iterator = 1
     for location in monster_locations:
         m = Monster()
-        m.name = 'Teeters ' + str(iterator)
+        m.name = monster_names[maze_level - 1] + str(iterator)
         m.position_one = location[0]
         m.position_two = location[1]
-        m.health = 10
-        m.damage = 20
+        m.health = 10 * maze_level
+        m.damage = 5 * maze_level
         m.potion = 0
         iterator += 1
         # print(m.name, m.position_one, m.position_two)
@@ -58,7 +60,7 @@ def create_monsters():
     # return m
 
 
-create_monsters()
+create_monsters(3)
 
 
 def print_status(person):
@@ -67,16 +69,4 @@ def print_status(person):
         f'{person.name} is now in position {person.position_one, person.position_two} with {person.health} health and '
         f'{person.money} coins...\n')
 
-# another_hero = Hero(my_name)
-# level_aa_monster = create_monsters()
-# level_a_monster = Monster('Skeeter Bite')
-# level_a_monster.health = 20
-# level_a_monster.damage = 5
-# level_b_monster = Monster('Milky Mounds')
-# level_c_monster = Monster('Jugs Er Knot')
-# level_d_monster = Monster('Death Hooters')
-# level_dd_monster = Monster('Slimy Boobies')
-# level_ddd_monster = Monster('Hell\'s Gate Knockers')
-# def monster_stats(monster):
-#     print(f'Monster Stats: {monster.name}, is in position {add_leading_zero(monster.position)} with'
-#           f' {monster.health} health')
+
