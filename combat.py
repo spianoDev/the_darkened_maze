@@ -18,7 +18,7 @@ def combat(self, enemy):
     while enemy.health > 0:
         self_luck = randint(1, 6)
         monster_luck = randint(2, 6)
-        print(f'self = {self_luck} and monster = {monster_luck}')
+        print(f'{self.name} = {self_luck} and {enemy.name} = {monster_luck}')
         if self_luck == monster_luck or self_luck > monster_luck:
             typing(f'{self.name} and {enemy.name} eye each other suspiciously...\n')
             reply = input(f'{self.name}, you can try to strike the first blow or run away [f = fight, r = run] ')
@@ -40,8 +40,8 @@ def combat(self, enemy):
 
 def health_points(attacker, defender, health, damage):
     if defender.health <= 50 and defender.potion > 0:
-        increase_health = input(f'{defender.name}, your health is dropping quickly. Would you like to use a health potion? '
-                           f'[y = yes or n = no] ')
+        increase_health = input(f'{defender.name}, your health is dropping quickly. Would you like to use a '
+                                f'health potion? [y = yes or n = no] ')
         if increase_health.lower() == 'yes' or increase_health.lower() == 'y':
             defender.health += 10
             defender.potion -= 1

@@ -40,7 +40,7 @@ player2 = Hero('computer')
 
 player2.damage = 10
 
-create_monsters(3)
+create_monsters(1)
 
 
 def play_level(player, enemy):

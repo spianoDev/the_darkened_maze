@@ -44,6 +44,12 @@ monster_locations = [(pos1, pos2) for pos1, i in enumerate(board)
 monsters = []
 
 
+def monster_level_stat():
+    # for i in range(maze_level):
+    stat = randint(8, 12)
+    return stat
+
+
 def create_monsters(maze_level):
     iterator = 1
     for location in monster_locations:
@@ -51,16 +57,16 @@ def create_monsters(maze_level):
         m.name = monster_names[maze_level - 1] + str(iterator)
         m.position_one = location[0]
         m.position_two = location[1]
-        m.health = 10 * maze_level
-        m.damage = 5 * maze_level
+        m.health = monster_level_stat() * maze_level
+        m.damage = monster_level_stat() * maze_level
         m.potion = 0
         iterator += 1
-        # print(m.name, m.position_one, m.position_two)
+        print(m.name, m.position_one, m.position_two, m.health, m.damage)
         monsters.append(m)
     # return m
 
 
-create_monsters(3)
+create_monsters(7)
 
 
 def print_status(person):
@@ -68,5 +74,3 @@ def print_status(person):
     typing(
         f'{person.name} is now in position {person.position_one, person.position_two} with {person.health} health and '
         f'{person.money} coins...\n')
-
-
