@@ -18,7 +18,7 @@ def combat(self, enemy):
     while enemy.health > 0:
         self_luck = randint(1, 6)
         monster_luck = randint(2, 6)
-        print(f'{self.name} = {self_luck} and {enemy.name} = {monster_luck}')
+        # print(f'Player1 = {self_luck} and Monster = {monster_luck}')
         if self_luck == monster_luck or self_luck > monster_luck:
             typing(f'{self.name} and {enemy.name} eye each other suspiciously...\n')
             reply = input(f'{self.name}, you can try to strike the first blow or run away [f = fight, r = run] ')

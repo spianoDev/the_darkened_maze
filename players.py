@@ -61,12 +61,12 @@ def create_monsters(maze_level):
         m.damage = monster_level_stat() * maze_level
         m.potion = 0
         iterator += 1
-        print(m.name, m.position_one, m.position_two, m.health, m.damage)
+        # print(m.name, m.position_one, m.position_two, m.health, m.damage)
         monsters.append(m)
     # return m
 
 
-create_monsters(7)
+create_monsters(1)
 
 
 def print_status(person):

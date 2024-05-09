@@ -4,7 +4,13 @@ from random import randint
 from find_treasure import *
 from combat import *
 from players import *
-from style import typing
+from style import *
+
+# combat = '[blink][red]COMBAT![/blink]'
+# print_combat = console.print(combat)
+
+# def special_words(word):
+#     console.print(word)
 
 
 ## Basic move functions without hard coded values ##
@@ -103,7 +109,7 @@ def action(self, opponent, direction):
         find_chest(len(board), self)
     elif board[self.position_one][self.position_two] == '^^':
         map_of_board[self.position_one][self.position_two] = '^^'
-        typing(f'{self.name}, you see an enemy ahead! Prepare for COMBAT with {opponent.name}!!\n')
+        typing(f'{self.name}, you see an enemy ahead! Prepare for COMBAT! with {opponent.name}!!\n')
         combat(self, opponent)
     elif board[self.position_one][self.position_two] == '@>':
         map_of_board[self.position_one][self.position_two] = '- '
