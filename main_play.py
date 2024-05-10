@@ -5,7 +5,7 @@ from boards import *
 from health import *
 
 
-def print_options(self, user_input):
+def print_options(self, opponent, user_input):
     if user_input.lower() == 'get status' or user_input.lower() == 's':
         print_status(self)
     if user_input.lower() == 'print map' or user_input.lower() == 'm':
@@ -14,7 +14,7 @@ def print_options(self, user_input):
         print_status(self)
         print_map(self)
     else:
-        pass
+        move(self, opponent, user_input)
 
 
 def do_turn(player, opponent):
@@ -31,9 +31,9 @@ def do_turn(player, opponent):
     else:
         map_of_board[player.position_one][player.position_two] = 'P1'
     typing(f'{player.name}, what would you like to do next? \n'
-           f'[s = get status, m = print map, b = both, or press enter to continue] ')
+           f'[s = get status, m = print map, b = both, or move u = up, d = down, r = right, l = left] ')
     next_step = input('')
-    print_options(player, next_step)
+    print_options(player, opponent, next_step)
 
 
 player2 = Hero('computer')

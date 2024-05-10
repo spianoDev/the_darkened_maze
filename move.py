@@ -6,11 +6,7 @@ from combat import *
 from players import *
 from style import *
 
-# combat = '[blink][red]COMBAT![/blink]'
-# print_combat = console.print(combat)
-
-# def special_words(word):
-#     console.print(word)
+# formatted_combat = console.print(f'Prepare for [red1]COMBAT')
 
 
 ## Basic move functions without hard coded values ##
@@ -103,13 +99,15 @@ def action(self, opponent, direction):
         typing(f'{self.name} has run into a wall.\n')
         map_of_board[self.position_one][self.position_two] = '||'
         found_wall(self, direction, 'a wall')
-        action(self, opponent, direction)
+        # action(self, opponent, direction)
     elif board[self.position_one][self.position_two] == '$$':
         map_of_board[self.position_one][self.position_two] = '- '
         find_chest(len(board), self)
     elif board[self.position_one][self.position_two] == '^^':
         map_of_board[self.position_one][self.position_two] = '^^'
-        typing(f'{self.name}, you see an enemy ahead! Prepare for COMBAT! with {opponent.name}!!\n')
+        typing(f'{self.name}, you see an enemy ahead! Prepare for ')
+        console.print('[red1]COMBAT[/red1]', end='')
+        typing(f' with {opponent.name}!!\n')
         combat(self, opponent)
     elif board[self.position_one][self.position_two] == '@>':
         map_of_board[self.position_one][self.position_two] = '- '
