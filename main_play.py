@@ -19,22 +19,14 @@ def print_options(self, opponent, user_input):
 
 def do_turn(player, opponent):
     """Run turn sequence"""
-    typing(f'{player.name} what direction would you like to go? \n'
-           f'[u = up, d = down, r = right, l = left] ')
+    typing(f'{player.name}, what would you like to do next? \n'
+           f'[s = get status, m = print map, b = both, or move u = up, d = down, r = right, l = left] ')
     move_option = input('')
-    typing(f'{player.name} moves to new position...\n')
-    map_of_board[player.position_one][player.position_two] = '- '
-
-    move(player, opponent, move_option)
-    if player.position_one == len(board) and player.position_two == len(board) - 1:
+    print_options(player, opponent, move_option)
+    if player.position_one == len(board) and player.position_two < len(board):
         return
     else:
         map_of_board[player.position_one][player.position_two] = 'P1'
-    typing(f'{player.name}, what would you like to do next? \n'
-           f'[s = get status, m = print map, b = both, or move u = up, d = down, r = right, l = left] ')
-    next_step = input('')
-    print_options(player, opponent, next_step)
-
 
 
 player2 = Hero('computer')
@@ -66,6 +58,7 @@ player1 = Hero(my_name)
 typing(f'{player1.name}, you have discovered a maze! Do you have the courage to enter? [e = enter, a = avoid] \n')
 play_game = input('')
 if play_game.lower() == 'enter' or play_game.lower() == 'e':
+    map_of_board[player1.position_one][player1.position_two] = 'P1'
     play_level(player1, monsters)
 else:
     typing(f'{player1.name}, fair thee well... \n')

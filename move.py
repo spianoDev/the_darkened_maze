@@ -118,6 +118,9 @@ def action(self, opponent, direction):
 
 ## Using the move and actions together to get different results ##
 def move(self, opponent, direction):
+    typing(f'{self.name} moves to new position...\n')
+    if self.position_one == 0 and self.position_two == 0:
+        map_of_board[self.position_one][self.position_two] = '- '
     if direction.lower() == 'up' or direction.lower() == 'u':
         move_up(self)
         action(self, opponent, direction)
