@@ -6,6 +6,7 @@ from combat import *
 from players import *
 from style import *
 
+
 # formatted_combat = console.print(f'Prepare for [red1]COMBAT')
 
 
@@ -54,26 +55,25 @@ def found_wall(self, direction, barrier):
             boundary()
         else:
             move_down(self)
-    if direction == 'down':
+    elif direction == 'down':
         if barrier == 'the boundary':
             self.position_one = len(board) - 1
             boundary()
         else:
             move_up(self)
-    if direction == 'right':
+    elif direction == 'right':
         if barrier == 'the boundary':
             self.position_two = len(board) - 1
             boundary()
         else:
             move_left(self)
-    if direction == 'left':
+    elif direction == 'left':
         if barrier == 'the boundary':
             self.position_two = 0
             boundary()
         else:
             move_right(self)
     typing(f'{self.name} spins around, remaining on the same space.\n')
-    return
 
 
 def boundary():
@@ -99,7 +99,7 @@ def action(self, opponent, direction):
         typing(f'{self.name} has run into a wall.\n')
         map_of_board[self.position_one][self.position_two] = '||'
         found_wall(self, direction, 'a wall')
-        # action(self, opponent, direction)
+        action(self, opponent, direction)
     elif board[self.position_one][self.position_two] == '$$':
         map_of_board[self.position_one][self.position_two] = '- '
         find_chest(len(board), self)

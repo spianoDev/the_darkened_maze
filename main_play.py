@@ -36,6 +36,7 @@ def do_turn(player, opponent):
     print_options(player, opponent, next_step)
 
 
+
 player2 = Hero('computer')
 
 player2.damage = 10
@@ -71,7 +72,3 @@ else:
     sleep(2)
     typing('A creaking sound behind you forces you to turn around just in time to see the maze entrance obscure '
            'itself with vines and brambles.\n')
-
-
-
-
