@@ -8,12 +8,17 @@ from health import *
 def print_options(self, opponent, user_input):
     if user_input.lower() == 'get status' or user_input.lower() == 's':
         print_status(self)
+        return
     if user_input.lower() == 'print map' or user_input.lower() == 'm':
         print_map(self)
+        return
     if user_input.lower() == 'both' or user_input.lower() == 'b':
         print_status(self)
         print_map(self)
+        return
     else:
+        if self.position_one == 0 and self.position_two == 0:
+            map_of_board[self.position_one][self.position_two] = '- '
         move(self, opponent, user_input)
 
 
@@ -23,10 +28,11 @@ def do_turn(player, opponent):
            f'[s = get status, m = print map, b = both, or move u = up, d = down, r = right, l = left] ')
     move_option = input('')
     print_options(player, opponent, move_option)
-    if player.position_one == len(board) and player.position_two < len(board):
-        return
-    else:
-        map_of_board[player.position_one][player.position_two] = 'P1'
+    # map_of_board[player.position_one][player.position_two] = 'P1'
+    # if player.position_one == len(board) and player.position_two < len(board):
+    #     return
+    # else:
+    #     map_of_board[player.position_one][player.position_two] = 'P1'
 
 
 player2 = Hero('computer')
