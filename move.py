@@ -74,6 +74,7 @@ def found_wall(self, direction, barrier):
         else:
             move_right(self)
     typing(f'{self.name} spins around, remaining on the same space.\n')
+    map_of_board[self.position_one][self.position_two] = 'P1'
     return
 
 
@@ -96,11 +97,10 @@ def action(self, opponent, direction):
         return
     if board[self.position_one][self.position_two] == ' - ':
         map_of_board[self.position_one][self.position_two] = '- '
-    if board[self.position_one][self.position_two] == '||':
+    elif board[self.position_one][self.position_two] == '||':
         typing(f'{self.name} has run into a wall.\n')
         map_of_board[self.position_one][self.position_two] = '||'
         found_wall(self, direction, 'a wall')
-        # action(self, opponent, direction)
     elif board[self.position_one][self.position_two] == '$$':
         map_of_board[self.position_one][self.position_two] = '- '
         find_chest(len(board), self)
@@ -115,6 +115,7 @@ def action(self, opponent, direction):
         find_potion(self)
     else:
         typing(f'This location seems safe for now...\n')
+        map_of_board[self.position_one][self.position_two] = 'P1'
 
 
 ## Using the move and actions together to get different results ##
@@ -132,3 +133,4 @@ def move(self, opponent, direction):
     if direction.lower() == 'left' or direction.lower() == 'l':
         move_left(self)
         action(self, opponent, direction)
+

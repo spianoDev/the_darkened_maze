@@ -27,3 +27,17 @@ def print_map(self):
     console.print(Panel(printable_maze_map[:-1], title='[bold dark_red]Maze Level 1',
                         style='bold black on light_yellow3', expand=False))
 
+
+def make_map(self):
+    if board[self.position_one][self.position_two] == '||':
+        map_of_board[self.position_one][self.position_two] = '||'
+        return
+    elif self.position_one == len(board) and self.position_two < len(board):
+        return
+    else:
+        map_of_board[self.position_one][self.position_two] = 'P1'
+    print('got here')
+
+
+def set_path(self):
+    map_of_board[self.position_one][self.position_two] = '- '
