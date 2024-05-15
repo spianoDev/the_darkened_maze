@@ -50,30 +50,14 @@ def move_left(self):
 ## actions when encountering a wall or the boundary of the board ##
 def found_wall(self, direction, barrier):
     if direction == 'up':
-        if barrier == 'the boundary':
-            self.position_one = 0
-            boundary()
-        else:
-            move_down(self)
+        move_down(self)
     elif direction == 'down':
-        if barrier == 'the boundary':
-            self.position_one = len(board) - 1
-            boundary()
-        else:
-            move_up(self)
+        move_up(self)
     elif direction == 'right':
-        if barrier == 'the boundary':
-            self.position_two = len(board) - 1
-            boundary()
-        else:
-            move_left(self)
+        move_left(self)
     elif direction == 'left':
-        if barrier == 'the boundary':
-            self.position_two = 0
-            boundary()
-        else:
-            move_right(self)
-    typing(f'{self.name} spins around, remaining on the same space.\n')
+        move_right(self)
+    typing(f'{self.name} returns to the previous position.\n')
     map_of_board[self.position_one][self.position_two] = 'P1'
     return
 
@@ -85,16 +69,30 @@ def boundary():
     typing(f'You have encountered {off_board}. \n')
 
 
+def found_boundary(self, direction, barrier):
+    if direction == 'up':
+        self.position_one = 0
+        boundary()
+    elif direction == 'down':
+        self.position_one = len(board) - 1
+        boundary()
+    elif direction == 'right':
+        self.position_two = len(board) - 1
+        boundary()
+    elif direction == 'left':
+        self.position_two = 0
+        boundary()
+    typing(f'{self.name} spins around, quickly returning to a safer spot.\n')
+    map_of_board[self.position_one][self.position_two] = 'P1'
+    return
+
+
 ## actions according to what the move encounters ##
 def action(self, opponent, direction):
-    if self.position_one == len(board) and self.position_two == len(board) - 1:
-        return
-    if self.position_one == len(board) or self.position_two == len(board):
-        if self.position_one < len(board) or self.position_two < len(board):
-            found_wall(self, direction, 'the boundary')
-        else:
-            print(f'{self.name} is now out of the maze')
-        return
+    # if self.position_one == len(board) or self.position_two == len(board):
+    #     if self.position_one < len(board) or self.position_two < len(board):
+    #         found_wall(self, direction, 'the boundary')
+    #     return
     if board[self.position_one][self.position_two] == ' - ':
         map_of_board[self.position_one][self.position_two] = '- '
     elif board[self.position_one][self.position_two] == '||':
@@ -116,6 +114,7 @@ def action(self, opponent, direction):
     else:
         typing(f'This location seems safe for now...\n')
         map_of_board[self.position_one][self.position_two] = 'P1'
+    out_of_board(self)
 
 
 ## Using the move and actions together to get different results ##
@@ -133,4 +132,3 @@ def move(self, opponent, direction):
     if direction.lower() == 'left' or direction.lower() == 'l':
         move_left(self)
         action(self, opponent, direction)
-

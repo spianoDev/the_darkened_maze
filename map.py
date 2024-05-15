@@ -12,6 +12,7 @@ for row in board:
             map_row.append('\n')
     map_of_board.append(map_row)
 
+
 # map_of_board[0][0] = 'P1'
 
 
@@ -41,3 +42,8 @@ def make_map(self):
 
 def set_path(self):
     map_of_board[self.position_one][self.position_two] = '- '
+
+
+def out_of_board(player):
+    if player.position_one == len(board) and player.position_two == len(board) - 1:
+        print('maze solved')
