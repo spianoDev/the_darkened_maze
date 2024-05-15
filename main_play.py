@@ -17,7 +17,7 @@ def print_options(self, opponent, user_input):
         print_map(self)
         return
     else:
-        set_path(self)
+        # set_path(self)
         # if self.position_one == 0 and self.position_two == 0:
         #     map_of_board[self.position_one][self.position_two] = '- '
         move(self, opponent, user_input)
@@ -25,7 +25,7 @@ def print_options(self, opponent, user_input):
 
 def do_turn(player, opponent):
     """Run turn sequence"""
-    make_map(player)
+    # make_map(player)
     typing(f'{player.name}, what would you like to do next? \n'
            f'[s = get status, m = print map, b = both, or move u = up, d = down, r = right, l = left] ')
     move_option = input('')

@@ -7,48 +7,54 @@ from players import *
 from style import *
 
 
-# formatted_combat = console.print(f'Prepare for [red1]COMBAT')
-
-
 ## Basic move functions without hard coded values ##
 def move_up(self):
+    set_path(self)
     if self.position_one > 0:
         self.position_one -= 1
+        # make_map(self)
         return
     else:
-        found_wall(self, 'up', 'the boundary')
+        found_boundary(self, 'up')
         return
 
 
 def move_down(self):
+    set_path(self)
     if self.position_one < len(board):
         self.position_one += 1
+        # make_map(self)
         return
     else:
-        found_wall(self, 'down', 'the boundary')
+        found_boundary(self, 'down')
         return
 
 
 def move_right(self):
+    set_path(self)
     if self.position_two < len(board):
         self.position_two += 1
+        # make_map(self)
         return
     else:
-        found_wall(self, 'right', 'the boundary')
+        found_boundary(self, 'right')
         return
 
 
 def move_left(self):
+    set_path(self)
     if self.position_two > 0:
         self.position_two -= 1
+        # make_map(self)
         return
     else:
-        found_wall(self, 'left', 'the boundary')
+        found_boundary(self, 'left')
         return
 
 
 ## actions when encountering a wall or the boundary of the board ##
-def found_wall(self, direction, barrier):
+def found_wall(self, direction):
+    map_of_board[self.position_one][self.position_two] = '||'
     if direction == 'up':
         move_down(self)
     elif direction == 'down':
@@ -58,8 +64,8 @@ def found_wall(self, direction, barrier):
     elif direction == 'left':
         move_right(self)
     typing(f'{self.name} returns to the previous position.\n')
-    map_of_board[self.position_one][self.position_two] = 'P1'
-    return
+    # map_of_board[self.position_one][self.position_two] = 'P1'
+    # return
 
 
 def boundary():
@@ -69,21 +75,22 @@ def boundary():
     typing(f'You have encountered {off_board}. \n')
 
 
-def found_boundary(self, direction, barrier):
+def found_boundary(self, direction):
     if direction == 'up':
         self.position_one = 0
-        boundary()
+        # boundary()
     elif direction == 'down':
         self.position_one = len(board) - 1
-        boundary()
+        # boundary()
     elif direction == 'right':
         self.position_two = len(board) - 1
-        boundary()
+        # boundary()
     elif direction == 'left':
         self.position_two = 0
-        boundary()
+    boundary()
     typing(f'{self.name} spins around, quickly returning to a safer spot.\n')
     map_of_board[self.position_one][self.position_two] = 'P1'
+    make_map(self)
     return
 
 
@@ -94,13 +101,17 @@ def action(self, opponent, direction):
     #         found_wall(self, direction, 'the boundary')
     #     return
     if board[self.position_one][self.position_two] == ' - ':
-        map_of_board[self.position_one][self.position_two] = '- '
+        set_path(self)
+        typing(f'This location seems safe for now...\n')
+        # map_of_board[self.position_one][self.position_two] = '- '
     elif board[self.position_one][self.position_two] == '||':
+        # set_path(self)
         typing(f'{self.name} has run into a wall.\n')
-        map_of_board[self.position_one][self.position_two] = '||'
-        found_wall(self, direction, 'a wall')
+        # map_of_board[self.position_one][self.position_two] = '||'
+        found_wall(self, direction)
     elif board[self.position_one][self.position_two] == '$$':
-        map_of_board[self.position_one][self.position_two] = '- '
+        # map_of_board[self.position_one][self.position_two] = '- '
+        set_path(self)
         find_chest(len(board), self)
     elif board[self.position_one][self.position_two] == '^^':
         map_of_board[self.position_one][self.position_two] = '^^'
@@ -109,11 +120,14 @@ def action(self, opponent, direction):
         typing(f' with {opponent.name}!!\n')
         combat(self, opponent)
     elif board[self.position_one][self.position_two] == '@>':
-        map_of_board[self.position_one][self.position_two] = '- '
+        # map_of_board[self.position_one][self.position_two] = '- '
+        set_path(self)
         find_potion(self)
-    else:
-        typing(f'This location seems safe for now...\n')
-        map_of_board[self.position_one][self.position_two] = 'P1'
+    # else:
+    #     typing(f'This location seems safe for now...\n')
+    #     make_map(self)
+        # map_of_board[self.position_one][self.position_two] = 'P1'
+    make_map(self)
     out_of_board(self)
 
 
