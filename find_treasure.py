@@ -2,6 +2,7 @@ from random import randint
 from boards import *
 from style import *
 from health import *
+from map import make_map
 
 
 chest_image = '[gold3] ._____._____.  \n/_____/|\\____/ \\\n\\             \\ )\n/____[yellow1] $$$ [/yellow1]____/ |\n|             | |\n|_____/|\\_____| /\n'
@@ -21,6 +22,7 @@ def find_chest(game_level, player):
     typing(f'Congratulations {player.name}, you have found a chest containing {chest} coins and now carry'
            f' {player.money} coins!!\n')
     board[player.position_one][player.position_two] = ' - '
+    make_map(player)
 
 
 ## initial find potion function ##
@@ -40,3 +42,4 @@ def find_potion(player):
         player.potion += 1
         typing(f'You are in perfect health, you pick up this potion for later. You now hold {player.potion} potions.\n')
     board[player.position_one][player.position_two] = ' - '
+    make_map(player)

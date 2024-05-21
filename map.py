@@ -43,6 +43,11 @@ def set_path(self):
     print('PATH')
 
 
+def make_wall(self):
+    map_of_board[self.position_one][self.position_two] = '||'
+    print('WALL')
+
+
 def out_of_board(player):
     if player.position_one == len(board) and player.position_two == len(board) - 1:
         print('maze solved')

@@ -10,9 +10,11 @@ def print_options(self, opponent, user_input):
         print_status(self)
         return
     if user_input.lower() == 'print map' or user_input.lower() == 'm':
+        make_map(self)
         print_map(self)
         return
     if user_input.lower() == 'both' or user_input.lower() == 'b':
+        make_map(self)
         print_status(self)
         print_map(self)
         return
@@ -25,11 +27,11 @@ def print_options(self, opponent, user_input):
 
 def do_turn(player, opponent):
     """Run turn sequence"""
-    # make_map(player)
+    make_map(player)
     typing(f'{player.name}, what would you like to do next? \n'
            f'[s = get status, m = print map, b = both, or move u = up, d = down, r = right, l = left] ')
     move_option = input('')
-
+    # set_path(player)
     print_options(player, opponent, move_option)
     # map_of_board[player.position_one][player.position_two] = '- '
     # make_map(player)
