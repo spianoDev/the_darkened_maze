@@ -46,15 +46,15 @@ def move_left(self):
 
 ## actions when encountering a wall or the boundary of the board ##
 def found_wall(self, direction):
-    if direction == 'up':
+    if direction.lower() == 'up' or direction.lower() == 'u':
         move_down(self)
         print('move back down')
     elif direction.lower() == 'down' or direction.lower() == 'd':
         move_up(self)
         print('move back up')
-    elif direction == 'right':
+    elif direction.lower() == 'right' or direction.lower() == 'r':
         move_left(self)
-    elif direction == 'left':
+    elif direction.lower() == 'left' or direction.lower() == 'l':
         move_right(self)
     typing(f'{self.name} returns to the previous position.\n')
     return

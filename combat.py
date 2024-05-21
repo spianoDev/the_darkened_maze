@@ -25,6 +25,7 @@ def combat(self, enemy):
             if reply.lower() == 'fight' or reply.lower() == 'f':
                 health_points(self, enemy, enemy.health, self.damage)
             elif reply.lower == 'run' or reply.lower() == 'r':
+                map_of_board[self.position_one][self.position_two] = '^^'
                 if self_luck >= 3:
                     run_away.move(self, enemy, 'left')
                     break
