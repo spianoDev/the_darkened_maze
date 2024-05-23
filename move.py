@@ -108,7 +108,10 @@ def action(self, opponent, direction):
 
 ## Using the move and actions together to get different results ##
 def move(self, opponent, direction):
-    set_path(self)
+    if board[self.position_one][self.position_two] == '^^':
+        pass
+    else:
+        set_path(self)
     typing(f'{self.name} moves to new position...\n')
     if direction.lower() == 'up' or direction.lower() == 'u':
         move_up(self)

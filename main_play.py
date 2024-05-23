@@ -10,11 +10,11 @@ def print_options(self, opponent, user_input):
         print_status(self)
         return
     if user_input.lower() == 'print map' or user_input.lower() == 'm':
-        make_map(self)
+        # make_map(self)
         print_map(self)
         return
     if user_input.lower() == 'both' or user_input.lower() == 'b':
-        make_map(self)
+        # make_map(self)
         print_status(self)
         print_map(self)
         return
@@ -51,10 +51,18 @@ create_monsters(1)
 
 def play_level(player, enemy):
     while player.position_one < len(board) and player.position_two < len(board):
+        if player.position_two == len(board) and player.position_one < len(board):
+            found_boundary(player, direction='left')
+        if player.position_one == len(board) and player.position_two < len(board):
+            if player.position_two == len(board) - 1:
+                out_of_board(player)
+                break
+            else:
+                found_boundary(player, direction='up')
         if enemy[0].health > 0:
-            do_turn(player1, enemy[0])
+            do_turn(player, enemy[0])
         elif enemy[1].health > 0:
-            do_turn(player1, enemy[1])
+            do_turn(player, enemy[1])
         else:
             do_turn(player, enemy)
     typing(f'Congratulations {player.name}, you have solved the maze!\n')

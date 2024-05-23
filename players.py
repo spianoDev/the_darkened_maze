@@ -70,7 +70,6 @@ create_monsters(1)
 
 
 def print_status(person):
-    # print(person.name, person.position, person.health, person.damage, person.experience, person.money)
     typing(
         f'{person.name} is now in position {person.position_one, person.position_two} with {person.health} health and '
-        f'{person.money} coins...\n')
+        f'{person.money} coins and {person.potion} potions...\n')

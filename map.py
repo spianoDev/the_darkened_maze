@@ -30,10 +30,6 @@ def print_map(self):
 
 
 def make_map(self):
-    # if board[self.position_one][self.position_two] == '||':
-    #     map_of_board[self.position_one][self.position_two] = '||'
-    #     print('WALL')
-    # else:
     map_of_board[self.position_one][self.position_two] = 'P1'
     print('MAP')
 
@@ -51,3 +47,4 @@ def make_wall(self):
 def out_of_board(player):
     if player.position_one == len(board) and player.position_two == len(board) - 1:
         print('maze solved')
+
