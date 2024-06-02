@@ -10,19 +10,24 @@ def print_options(self, opponent, user_input):
         print_status(self)
         return
     if user_input.lower() == 'print map' or user_input.lower() == 'm':
-        # make_map(self)
         print_map(self)
         return
     if user_input.lower() == 'both' or user_input.lower() == 'b':
-        # make_map(self)
         print_status(self)
         print_map(self)
         return
     else:
-        # set_path(self)
-        # if self.position_one == 0 and self.position_two == 0:
-        #     map_of_board[self.position_one][self.position_two] = '- '
-        move(self, opponent, user_input)
+        if self.position_one == len(board) and self.position_two < len(board):
+            print('side of board')
+            # if self.position_two == len(board) - 1:
+            #     out_of_board(self)
+            # else:
+            found_boundary(self, direction='up')
+        if self.position_two == len(board) and self.position_one < len(board):
+            print('bottom of board')
+            found_boundary(self, direction='left')
+        else:
+            move(self, opponent, user_input)
 
 
 def do_turn(player, opponent):
@@ -50,24 +55,14 @@ create_monsters(1)
 
 
 def play_level(player, enemy):
-    while player.position_one < len(board) and player.position_two < len(board):
-        if player.position_two == len(board) and player.position_one < len(board):
-            found_boundary(player, direction='left')
-        if player.position_one == len(board) and player.position_two < len(board):
-            if player.position_two == len(board) - 1:
-                out_of_board(player)
-                break
-            else:
-                found_boundary(player, direction='up')
+    while player.position_one <= len(board) and player.position_two <= len(board):
         if enemy[0].health > 0:
             do_turn(player, enemy[0])
         elif enemy[1].health > 0:
             do_turn(player, enemy[1])
         else:
             do_turn(player, enemy)
-    typing(f'Congratulations {player.name}, you have solved the maze!\n')
-    typing(f'Before continuing to the next level, you have the option to restore your health.\n')
-    buy_health(player, player.health, player.money, player.potion)
+    prepare_for_next_maze(player)
 
 
 print('\n')

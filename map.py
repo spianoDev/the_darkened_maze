@@ -1,5 +1,6 @@
 from boards import *
 from style import *
+from health import *
 
 map_of_board = []
 
@@ -48,3 +49,8 @@ def out_of_board(player):
     if player.position_one == len(board) and player.position_two == len(board) - 1:
         print('maze solved')
 
+
+def prepare_for_next_maze(player):
+    typing(f'Congratulations {player.name}, you have solved the maze!\n')
+    typing(f'Before continuing to the next level, you have the option to restore your health.\n')
+    buy_health(player, player.health, player.money, player.potion)

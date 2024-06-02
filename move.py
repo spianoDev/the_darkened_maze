@@ -71,9 +71,9 @@ def found_boundary(self, direction):
     if direction == 'up':
         self.position_one = 0
     elif direction.lower() == 'down':
-        self.position_one = len(board) - 1
+        move_up(self)
     elif direction == 'right':
-        self.position_two = len(board) - 1
+        move_left(self)
     elif direction == 'left':
         self.position_two = 0
     boundary()
@@ -108,6 +108,9 @@ def action(self, opponent, direction):
 
 ## Using the move and actions together to get different results ##
 def move(self, opponent, direction):
+    if self.position_one == len(board) or self.position_two == len(board):
+        out_of_board(self)
+        found_boundary(self, direction)
     if board[self.position_one][self.position_two] == '^^':
         pass
     else:
